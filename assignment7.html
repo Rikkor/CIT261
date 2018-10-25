@@ -54,7 +54,7 @@
 
 	<script>
 	function colorChange() {
-		var randomNum = Math.floor(Math.random() * 8); //Roll a random number to help pick a color
+		var randomNum = Math.floor(Math.random() * 8); //Roll a random number to pick a text color
 		if (randomNum == 1) {
     		document.getElementById("p2").style.color = "blue";
 		} else if (randomNum == 2) {
@@ -72,7 +72,7 @@
 		}
 	}
 	function fontChange() {
-		var randomNum = Math.floor(Math.random() * 5); //Roll a random number to help pick a color
+		var randomNum = Math.floor(Math.random() * 5); //Roll a random number to randomize a font family
 		if (randomNum == 1) {
     		document.getElementById("p2").style.fontFamily = "Georgia, serif";
 		} else if (randomNum == 2) {
@@ -85,7 +85,7 @@
 	}
 
 	function updatePicture() {
-		var randomPicNum = Math.floor(Math.random() * 6); //Roll a random number to help pick a color
+		var randomPicNum = Math.floor(Math.random() * 6); //Roll a random number to change picture size
 		if (randomPicNum == 1) { 
 			document.getElementById("pic1").style.height = "768px"; //90%
     		document.getElementById("pic1").style.width = "431px";

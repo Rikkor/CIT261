@@ -30,15 +30,19 @@
 <body>
 	<h1 align="center">Change CSS Class Properties using JavaScript</h1>
 
-	<p id="p1">This is some example text to show you how some text can be isolated from others and unchanged
-	from CSS changes like the ones done to the text below.</p><br><hr>
+	<p id="p1">This page is an example on how to manipulate CSS using JavaScript.<br>
+	These two examples will change the font family and color. There is also an example to modify a picture's attributes.</p><br><hr>
 
 	
 	<!--This area is for changing text colors and fonts-->
 	<h2>Changing Text with CSS through JavaScript</h2>
 	<div class="div1">
 		<p id="p2">This text will change colors based on which button is pressed below!</p>
-  		<button onclick="colorChange()" class="button">Randomly Change Font Color</button>
+  		<!--<button onclick="colorChange()" class="button">Randomly Change Font Color</button>-->
+  		<div class="btn-group" style="width:100%">
+  			<button onclick="colorChange()" class="button">Randomly Change Font Color</button>
+  			<button onclick="fontChange()" class="button">Randomly Change Font Family</button>
+		</div>
 	</div><br><hr>
 
 	<!--This area is for changing picture sizes-->
@@ -67,6 +71,18 @@
 			document.getElementById("p2").style.color = "black";
 		}
 	}
+	function fontChange() {
+		var randomNum = Math.floor(Math.random() * 5); //Roll a random number to help pick a color
+		if (randomNum == 1) {
+    		document.getElementById("p2").style.fontFamily = "Georgia, serif";
+		} else if (randomNum == 2) {
+			document.getElementById("p2").style.fontFamily = "Arial, Helvetica, sans-serif";
+		} else if (randomNum == 3) {
+			document.getElementById("p2").style.fontFamily = "Impact, Charcoal, sans-serif";
+		} else if (randomNum == 4) {
+			document.getElementById("p2").style.fontFamily = "Tahoma, Geneva, sans-serif";
+		}
+	}
 
 	function updatePicture() {
 		var randomPicNum = Math.floor(Math.random() * 6); //Roll a random number to help pick a color
@@ -85,6 +101,7 @@
 		} else if (randomPicNum == 5) {
 			document.getElementById("pic1").style.height = "480px"; //50%
     		document.getElementById("pic1").style.width = "270px";
+		}
 	}
 	</script>
 

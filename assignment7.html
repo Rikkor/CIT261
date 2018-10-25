@@ -1,17 +1,92 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<title>Change CSS Class Properties using JavaScript</title>
+	<style>
+		.button {
+    		background-color: #363636;
+    		border: none;
+    		color: white;
+    		padding: 15px 25px;
+    		text-align: center;
+    		font-size: 16px;
+    		cursor: pointer;
+		}
+
+		.button:hover {
+    		background-color: #000000;
+		}
+		#p1, h2 {
+			text-align: center;
+		}
+		.div1 {
+			text-align: center;
+		}
+		body {
+			background-color: lightgrey;
+		}
+	</style>
+</head>
 <body>
+	<h1 align="center">Change CSS Class Properties using JavaScript</h1>
 
-<p id="p1">Hello World!</p>
-<p id="p2">Hello World!</p>
+	<p id="p1">This is some example text to show you how some text can be isolated from others and unchanged
+	from CSS changes like the ones done to the text below.</p><br><hr>
 
-<script>
-document.getElementById("p2").style.color = "blue";
-document.getElementById("p2").style.fontFamily = "Arial";
-document.getElementById("p2").style.fontSize = "larger";
-</script>
+	
+	<!--This area is for changing text colors and fonts-->
+	<h2>Changing Text with CSS through JavaScript</h2>
+	<div class="div1">
+		<p id="p2">This text will change colors based on which button is pressed below!</p>
+  		<button onclick="colorChange()" class="button">Randomly Change Font Color</button>
+	</div><br><hr>
 
-<p>The paragraph above was changed by a script.</p>
+	<!--This area is for changing picture sizes-->
+	<div class="div1">
+		<h2>Changing Picture sizes with CSS through JavaScript</h2>
+  		<button id="btn2" class="button" onclick="updatePicture()">Random Picture Size</button><br>
+		<br><img id="pic1" src="https://i.imgur.com/MaLA8LO.jpg">
+	</div>
+
+	<script>
+	function colorChange() {
+		var randomNum = Math.floor(Math.random() * 8); //Roll a random number to help pick a color
+		if (randomNum == 1) {
+    		document.getElementById("p2").style.color = "blue";
+		} else if (randomNum == 2) {
+			document.getElementById("p2").style.color = "red";
+		} else if (randomNum == 3) {
+			document.getElementById("p2").style.color = "green";
+		} else if (randomNum == 4) {
+			document.getElementById("p2").style.color = "purple";
+		} else if (randomNum == 5) {
+			document.getElementById("p2").style.color = "pink";
+		} else if (randomNum == 6) {
+			document.getElementById("p2").style.color = "grey";
+		} else if (randomNum == 7) {
+			document.getElementById("p2").style.color = "black";
+		}
+	}
+
+	function updatePicture() {
+		var randomPicNum = Math.floor(Math.random() * 6); //Roll a random number to help pick a color
+		if (randomPicNum == 1) { 
+			document.getElementById("pic1").style.height = "768px"; //90%
+    		document.getElementById("pic1").style.width = "431px";
+		} else if (randomPicNum == 2) { 
+			document.getElementById("pic1").style.height = "768px"; //80%
+    		document.getElementById("pic1").style.width = "431px";
+		} else if (randomPicNum == 3) {
+			document.getElementById("pic1").style.height = "672px"; //70%
+    		document.getElementById("pic1").style.width = "378px";
+		} else if (randomPicNum == 4) {
+			document.getElementById("pic1").style.height = "576px"; //60%
+    		document.getElementById("pic1").style.width = "323px";
+		} else if (randomPicNum == 5) {
+			document.getElementById("pic1").style.height = "480px"; //50%
+    		document.getElementById("pic1").style.width = "270px";
+	}
+	</script>
 
 </body>
 </html>

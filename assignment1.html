@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Javascript - Loops, Conditional Statements, Variables and more!</title>
+    <style>
+        .button {
+            background-color: #363636;
+            border: none;
+            color: white;
+            padding: 15px 25px;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #000000;
+        }
+        #p1, h2 {
+            text-align: center;
+        }
+        #p1 {
+            font-style: italic;
+        }
+        .div1 {
+            text-align: center;
+        }
+        body {
+            background-color: lightgrey;
+        }
+        th {
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+    <h1 align="center">Javascript - Loops, Conditional Statements, Variables and more!</h1>
+
+    <p id="p1">This page shows how loops and arrays work in javascript!</p><br><hr>
+
+    <div class="div1">
+        <h2>Variables</h2>
+        <p id="p1">This section demonstrates the usage of variables. The user can input two numbers, which are then
+            stored in variables. These two variables are added together and the sum is given in the third box.</p>
+        <input type="text" name="textbox1" id="textbox1" /> + <input type="text" name="textbox2" id="textbox2" /> 
+        <input type="submit" name="button" id="button1" onclick="myfunction()" value="=" /><br>
+
+            <th><p>The sum is...</p></th>
+            <th><input type="text" name="textbox3" id="textbox3" readonly="true"/></th>
+    </div><hr>
+
+     <div class="div1">
+        <h2>Loops and Arrays</h2>
+        <p id="p1">This section demonstrates the usage of loops, variable, functions, parameters and conditional
+        statements all rolled into one!</p>
+        <p> Enter a number in the box below to see if it is prime or not.</p>
+        <input id="number" value="0" size="8" onclick="this.select()">
+        <input type="button" value="Check for primality" onclick="checkNumber()">
+        <p id="result">The result is displayed here!</p>
+    </div><hr>
+
+    <script type="text/javascript">
+    //This functions adds us textbox1 & textbox2
+    function myfunction() { 
+    var first = document.getElementById("textbox1").value;
+    var second = document.getElementById("textbox2").value; 
+    var answer = parseFloat(first)+parseFloat(second);
+
+    //Pass the answer to the variable textbox3, and display it in textbox3
+    var textbox3 = document.getElementById('textbox3');
+    textbox3.value = answer;
+    } 
+
+    //This function helps change the text below the box for prime numbers
+    function checkNumber() {
+        var number = document.getElementById("number").value;
+        if (!isNaN(number)) {
+            if (isPrime(number)) {
+                document.getElementById("result").innerHTML = number + " is prime!";
+            } else {
+                document.getElementById("result").innerHTML = number + " is not prime.";
+            }
+            } else {
+                document.getElementById("result").innerHTML = "Please enter a number.";
+            }
+        }
+    
+    function isPrime(n) {
+        //Numbers under 2 cannot be prime
+        if (n < 2) {
+            return false
+        }
+        if (n != Math.round(n)) {
+            return false
+        }
+        //n is assumed to be prime, and this tries to prove otherwise
+        var isPrime = true;
+
+        //Now check every whole number from 2 to the square root of n. If any of these divides n exactly, n cannot be prime.
+        for (var i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                isPrime = false
+            }
+        }
+        //Finally, return whether n is prime or not.
+        return isPrime;
+    } 
+    </script>
+</body>
+</html>
+
+

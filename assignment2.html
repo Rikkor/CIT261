@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Change CSS Class Properties using JavaScript</title>
+	<style>
+		.button {
+    		background-color: #363636;
+    		border: none;
+    		color: white;
+    		padding: 15px 25px;
+    		text-align: center;
+    		font-size: 16px;
+    		cursor: pointer;
+		}
+
+		.button:hover {
+    		background-color: #000000;
+		}
+		#p1, h2, #demo, #p2 {
+			text-align: center;
+		}
+		#p2 {
+			font-style: italic;
+		}
+		.div1 {
+			text-align: center;
+		}
+		body {
+			background-color: lightgrey;
+		}
+		.div1 {
+			text-align: center;
+		}
+	</style>
+	</head>
+	<body>
+
+	<h1 align="center">JavaScript Objects</h1>
+	<p id="p2">This page shows how JavaScript objects are used</p><hr>
+
+	<h2>JavaScript Object Creation Functions, Properties & Methods</h2>
+	<p id="p2">Each of the buttons below will access a premade user's information. Click each button
+		to display various information about them</p>
+	<div class="div1">
+		<button onclick="displayName()" class="button">Full Name</button>
+		<button onclick="displayID()" class="button">User ID</button>
+		<button onclick="displayColor()" class="button">Favorite Color</button>
+		<button onclick="displayFriends()" class="button">Best Friends</button>
+	</div>
+
+	<p id="demo"></p><hr>
+
+	<script>
+	//Create an object
+	var person = {
+    	firstName: "Tails",
+    	lastName : "Prowler",
+    	userID   : 1029486,
+    	favoriteColor: "Orange",
+    	bestFriends: "Sonic" + " & " + "Amy",
+    	fullName : function() {
+       	return this.firstName + " " + this.lastName;
+    	},
+    	ID : function() {
+    		return this.userID;
+    	},
+    	color : function() {
+    		return this.favoriteColor;
+    	},
+    	friend : function() {
+    		return this.bestFriends;
+    	},
+	};
+
+	function displayName() {
+		//Activates from a button and grabs full name from the object
+		document.getElementById("demo").innerHTML = person.fullName();
+	}
+	function displayID() {
+		//Activates from a button and grabs ID from the object
+		document.getElementById("demo").innerHTML = person.ID();
+	}
+	function displayColor() {
+		//Activates from a button and grabs favorite color from the object
+		document.getElementById("demo").innerHTML = person.color();
+	}
+	function displayFriends() {
+		//Activates from a button and grabs favorite color from the object
+		document.getElementById("demo").innerHTML = person.friend();
+	}
+	</script>
+</body>
+</html>

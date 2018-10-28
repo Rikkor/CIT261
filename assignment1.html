@@ -31,7 +31,7 @@
         th {
             font-weight: normal;
         }
-        #boxSize {
+        #textbox1, #textbox2, #textbox3 {
             width: 100px;
         }
     </style>
@@ -46,11 +46,11 @@
         <p id="p1">This section demonstrates the usage of variables. The user can input two numbers, which are then
             stored in variables. These two variables are added together and the sum is given in the third box.</p>
         <p>Enter a number in each box, and then hit the "=" button to find the sum of the two.</p>
-        <input type="text" name="textbox1" id="boxSize" value="0" /> + <input type="text" name="textbox2" id="boxSize" value="0" /> 
+        <input type="text" name="textbox1" id="textbox1" value="0" /> + <input type="text" name="textbox2" id="textbox2" value="0" /> 
         <input type="submit" name="button" id="button1" onclick="myfunction()" value="=" /><br>
 
             <th><p>The sum is...</p></th>
-            <th><input type="text" name="textbox3" id="boxSize" readonly="true" value="0" /></th>
+            <th><input type="text" name="textbox3" id="textbox3" readonly="true" /></th>
     </div><hr>
 
      <div class="div1">

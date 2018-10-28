@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>JSON HTTP Request</title>
+    <style>
+        .button {
+            background-color: #363636;
+            border: none;
+            color: white;
+            padding: 15px 25px;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #000000;
+        }
+        #p1, h2 {
+            text-align: center;
+        }
+        .div1 {
+            text-align: center;
+        }
+        body {
+            background-color: lightgrey;
+        }
+        #id01 {
+            text-align: center;
+        }
+        td {
+            height: 10px;
+        }
+    </style>
+    </head>
+    <body>
+
+    <h1 align="center">Request a JSON file using AJAX via XML</h1>
+
+    <p id="p1">This page demonstrages how to request a JSON file using AJAX (Also.<br>
+        Below are a list of links taken from the text file (acting as the JSON file here. Below that is the code
+        that demonstrates how to do that.</p><br><hr>
+
+    <div id="id01"></div>
+
+    <script>
+    var xmlhttp = new XMLHttpRequest();
+    //Text file contains an array
+    var url = "https://rikkor.github.io/CIT261/assignment4_sample_text.txt";
+
+    //This calls on "myFunction" and parses it to help display it in HTML
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var myArr = JSON.parse(this.responseText);
+            myFunction(myArr);
+        }
+    };
+
+    //Send the requests to the server
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+
+    //This function takes in the url (JSON file) and reads it to an array
+    function myFunction(arr) {
+        var out = "";
+        var i;
+        for(i = 0; i < arr.length; i++) {
+            out += '<a href="' + arr[i].url + '">' + 
+            arr[i].display + '</a><br>';
+        }
+        document.getElementById("id01").innerHTML = out;
+    }
+    </script><br><hr>
+    <table align="center">
+        <tr>
+            <th>This script is the actual code to request a JSON file</th>
+            <th>This is the text file that acts as the JSON file in this example</th>
+        <tr>
+            <td><script src="https://gist.github.com/Rikkor/4bb18b8a853b5c02bb5fde17e26991b0.js"></script></td>
+            <td><script src="https://gist.github.com/Rikkor/8b6ff66a87fb095e601994801dc73e06.js"></script></td>
+        </tr>
+    </table>
+    
+    </body>
+</html>

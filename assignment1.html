@@ -31,6 +31,9 @@
         th {
             font-weight: normal;
         }
+        #boxSize {
+            width: 100px;
+        }
     </style>
 </head>
 <body>
@@ -42,11 +45,12 @@
         <h2>Variables</h2>
         <p id="p1">This section demonstrates the usage of variables. The user can input two numbers, which are then
             stored in variables. These two variables are added together and the sum is given in the third box.</p>
-        <input type="text" name="textbox1" id="textbox1" /> + <input type="text" name="textbox2" id="textbox2" /> 
+        <p>Enter a number in each box, and then hit the "=" button to find the sum of the two.</p>
+        <input type="text" name="textbox1" id="boxSize" value="0" /> + <input type="text" name="textbox2" id="boxSize" value="0" /> 
         <input type="submit" name="button" id="button1" onclick="myfunction()" value="=" /><br>
 
             <th><p>The sum is...</p></th>
-            <th><input type="text" name="textbox3" id="textbox3" readonly="true"/></th>
+            <th><input type="text" name="textbox3" id="boxSize" readonly="true" value="0" /></th>
     </div><hr>
 
      <div class="div1">
@@ -90,6 +94,7 @@
         if (n < 2) {
             return false
         }
+        //Do some rounding to check if number is whole
         if (n != Math.round(n)) {
             return false
         }

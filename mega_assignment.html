@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Javascript - Loops, Conditional Statements, Variables and more!</title>
+    <title>Uploading a JSON File</title>
     <style>
         button, input {
             background-color: #363636;
@@ -59,52 +59,61 @@
       </tr>
     </table><hr>
 
+    <!-- This holds the upload a JSON file code -->
     <div class="div1">
-        <h2>Variables</h2>
-        <p id="p1">Testing</p>
-        <input type="file" id="selectFiles" value="Import" /><br />
-        <br><button id="import">Import</button><br />
+        <h2>Uploading JSON Files</h2>
+        <p id="p1">This area demonstrates how uploading a JSON file to a website works.
+          <br>Feel free to upload any txt or JSON file by hitting "Choose File". 
+          <br>Hit "Import" to import the uploaded file, or "Try Demo JSON" if you want to see a demo file in the works.</p>
+          <form method="get" action="jsontest.json">
+            <button type="submit">Download!</button>
+          </form>
+        <!--<button id="demoText" onclick="javascript:demoText();">Download Sample JSON</button><br />-->
+        <br><input type="file" id="selectFiles" value="Import" />
+        <br>
+        <table align="center">
+          <tr>
+            <td><button id="import" onclick="javascript:displayJSON();">Import</button><br/></td>
+            <td><button id="resultClear" onclick="javascript:eraseText();">Clear Results</button></td>
+          </tr>
+        </table>
         <br><textarea id="result"></textarea>
     </div><hr>
 
     <script type="text/javascript">
-      document.getElementById('import').onclick = function() {
-      var files = document.getElementById('selectFiles').files;
-      console.log(files);
-      if (files.length <= 0) {
-        return false;
-      }
-  
-      var fr = new FileReader();
-  
-      fr.onload = function(e) { 
-      console.log(e);
-        var result = JSON.parse(e.target.result);
-        var formatted = JSON.stringify(result, null, 2);
-        document.getElementById('result').value = formatted;
-      }
-  
-      fr.readAsText(files.item(0));
+      // Display JSON file in "results" text box
+      function displayJSON() {
+        var files = document.getElementById('selectFiles').files;
+        console.log(files);
+        if (files.length <= 0) {
+          return false;
+        }
+        var fr = new FileReader();
+        fr.onload = function(e) { 
+        console.log(e);
+          var result = JSON.parse(e.target.result);
+          var formatted = JSON.stringify(result, null, 2);
+          document.getElementById('result').value = formatted;
+        }
+        fr.readAsText(files.item(0));
       };
 
-      var xmlhttp = new XMLHttpRequest();
-    //Text file contains an array
-    var url = "https://rikkor.github.io/CIT261/assignment4_sample_text.txt";
+      // Code for the sample JSON file in upper part of page
+      var xmlhttp = new XMLHttpRequest(); 
+      var url = "https://rikkor.github.io/CIT261/assignment4_sample_text.txt";
 
-    //This calls on "myFunction" and parses it to help display it in HTML
-    xmlhttp.onreadystatechange = function() {
+      //This calls on "myFunction" and parses it to help display it in HTML
+      xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var myArr = JSON.parse(this.responseText);
             myFunction(myArr);
         }
-    };
-
-    //Send the requests to the server
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
-
-    //This function takes in the url (JSON file) and reads it to an array
-    function myFunction(arr) {
+      };
+      //Send the requests to the server
+      xmlhttp.open("GET", url, true);
+      xmlhttp.send();
+      //This function takes in the url (JSON file) and reads it to an array
+      function myFunction(arr) {
         var out = "";
         var i;
         for(i = 0; i < arr.length; i++) {
@@ -112,7 +121,15 @@
             arr[i].display + '</a><br>';
         }
         document.getElementById("id01").innerHTML = out;
-    }
+      }
+      function demoText() {
+        //<a href ="jsontest.json">
+
+      }
+      // Erases result field
+      function eraseText() {
+        document.getElementById("result").value = "";
+      }
     </script>
 </body>
 </html>

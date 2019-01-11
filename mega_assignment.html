@@ -20,7 +20,7 @@
             text-align: center;
         }
         #p1 {
-            font-style: italic;
+            font-style: bold;
         }
         .div1 {
             text-align: center;
@@ -64,11 +64,15 @@
         <h2>Uploading JSON Files</h2>
         <p id="p1">This area demonstrates how uploading a JSON file to a website works.
           <br>Feel free to upload any txt or JSON file by hitting "Choose File". 
-          <br>Hit "Import" to import the uploaded file, or "Try Demo JSON" if you want to see a demo file in the works.</p>
-          <form method="get" action="jsontest.json">
-            <button type="submit">Download!</button>
-          </form>
-        <!--<button id="demoText" onclick="javascript:demoText();">Download Sample JSON</button><br />-->
+          <br>Hit "Import" to import the uploaded file.</p>
+
+        <!-- Sample JSON text button -->
+        <form method="get" action="jsontest.json">
+            <button type="submit">Download Sample Text</button>
+        </form>
+        <p id="p1">Click the "Download Sample Text" to see sample text you can put in a txt or json file, and then upload here.</p>
+
+        <!-- HTML side for importing JSON files -->
         <br><input type="file" id="selectFiles" value="Import" />
         <br>
         <table align="center">
@@ -122,13 +126,11 @@
         }
         document.getElementById("id01").innerHTML = out;
       }
-      function demoText() {
-        //<a href ="jsontest.json">
 
-      }
       // Erases result field
       function eraseText() {
         document.getElementById("result").value = "";
+        document.getElementById('selectFiles').value = null;
       }
     </script>
 </body>

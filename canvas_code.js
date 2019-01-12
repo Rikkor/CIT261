@@ -23,7 +23,7 @@ window.cancelRequestAnimFrame = ( function() {
 } )();
 
 
-// Initialize canvas and requiwhite variables
+// Initialize canvas and required variables
 var canvas = document.getElementById("canvas"),
 		ctx = canvas.getContext("2d"), // Create canvas context
 		W = window.innerWidth, // Window's width
@@ -47,8 +47,8 @@ var canvas = document.getElementById("canvas"),
 	// Helps adjust game window size when resizing browser
 	var ctx = document.querySelector('canvas').getContext('2d');
 	window.addEventListener('resize',function(){
-  		var width  = calculateDesiwhiteWidth();  // your code here
-  		var height = calculateDesiwhiteHeight(); // your code here
+  		var width  = calculateDesiredWidth();  // your code here
+  		var height = calculateDesiredHeight(); // your code here
   		ctx.canvas.width  = width;
   		ctx.canvas.height = height;
   		ctx.translate(width/2,height/2); // now 0,0 is the center of the canvas.
@@ -92,7 +92,7 @@ ball = {
 	x: 50,
 	y: 50, 
 	r: 5,
-	c: "white",
+	c: "red",
 	vx: 4,
 	vy: 8,
 	
@@ -121,7 +121,7 @@ startBtn = {
 		ctx.font = "18px Arial, sans-serif";
 		ctx.textAlign = "center";
 		ctx.textBaseline = "middle";
-		ctx.fillStlye = "white";
+		ctx.fillStlye = "red";
 		ctx.fillText("Start", W/2, H/2 );
 	}
 };
@@ -134,14 +134,14 @@ restartBtn = {
 	y: H/2 - 50,
 	
 	draw: function() {
-		ctx.strokeStyle = "white";
+		ctx.strokeStyle = "red";
 		ctx.lineWidth = "2";
 		ctx.strokeRect(this.x, this.y, this.w, this.h);
 		
 		ctx.font = "18px Arial, sans-serif";
 		ctx.textAlign = "center";
 		ctx.textBaseline = "middle";
-		ctx.fillStlye = "white";
+		ctx.fillStlye = "red";
 		ctx.fillText("Restart", W/2, H/2 - 25 );
 	}
 };
@@ -163,7 +163,7 @@ function draw() {
 	for(var i = 0; i < paddles.length; i++) {
 		p = paddles[i];
 		
-		ctx.fillStyle = "white";
+		ctx.fillStyle = "red";
 		ctx.fillRect(p.x, p.y, p.w, p.h);
 	}
 	
@@ -322,7 +322,7 @@ function emitParticles() {
 		par = particles[j];
 		
 		ctx.beginPath(); 
-		ctx.fillStyle = "white";
+		ctx.fillStyle = "red";
 		if (par.radius > 0) {
 			ctx.arc(par.x, par.y, par.radius, 0, Math.PI*2, false);
 		}
@@ -331,7 +331,7 @@ function emitParticles() {
 		par.x += par.vx; 
 		par.y += par.vy; 
 		
-		// whiteuce radius so that the particles die after a few seconds
+		// reduce radius so that the particles die after a few seconds
 		par.radius = Math.max(par.radius - 0.05, 0.0); 
 		
 	} 
@@ -339,7 +339,7 @@ function emitParticles() {
 
 // Function for updating score
 function updateScore() {
-	ctx.fillStlye = "white";
+	ctx.fillStlye = "red";
 	ctx.font = "16px Arial, sans-serif";
 	ctx.textAlign = "left";
 	ctx.textBaseline = "top";
@@ -348,7 +348,7 @@ function updateScore() {
 
 // Function to run when the game overs
 function gameOver() {
-	ctx.fillStlye = "white";
+	ctx.fillStlye = "red";
 	ctx.font = "20px Arial, sans-serif";
 	ctx.textAlign = "center";
 	ctx.textBaseline = "middle";

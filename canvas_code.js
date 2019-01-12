@@ -1,3 +1,6 @@
+// This code was taken from https://codepen.io/yashbhardwaj/pen/iqBac Yash Bhardwaj
+// I made some slight modifications such as adjusting the size of the game with the browser and other minor changes
+
 // RequestAnimFrame: a browser API for getting smooth animations
 window.requestAnimFrame = (function(){
 	return  window.requestAnimationFrame       || 
@@ -40,6 +43,8 @@ var canvas = document.getElementById("canvas"),
 		over = 0, // flag varialbe, cahnged when the game is over
 		init, // variable to initialize animation
 		paddleHit;
+		
+	// Helps adjust game window size when resizing browser
 	var ctx = document.querySelector('canvas').getContext('2d');
 	window.addEventListener('resize',function(){
   		var width  = calculateDesiwhiteWidth();  // your code here

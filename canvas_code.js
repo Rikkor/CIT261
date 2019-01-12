@@ -114,7 +114,8 @@ startBtn = {
 	y: H/2 - 25,
 	
 	draw: function() {
-		ctx.strokeStyle = "blue";
+		// Button outline changed for visibility
+		ctx.strokeStyle = "white";
 		ctx.lineWidth = "2";
 		ctx.strokeRect(this.x, this.y, this.w, this.h);
 		

@@ -47,8 +47,8 @@ var canvas = document.getElementById("canvas"),
 	// Helps adjust game window size when resizing browser
 	var ctx = document.querySelector('canvas').getContext('2d');
 	window.addEventListener('resize',function(){
-  		var width  = calculateDesiyellowWidth();  // your code here
-  		var height = calculateDesiyellowHeight(); // your code here
+  		var width  = calculateDesiredWidth();  // your code here
+  		var height = calculateDesiredHeight(); // your code here
   		ctx.canvas.width  = width;
   		ctx.canvas.height = height;
   		ctx.translate(width/2,height/2); // now 0,0 is the center of the canvas.
@@ -353,7 +353,7 @@ function gameOver() {
 	ctx.font = "20px Arial, sans-serif";
 	ctx.textAlign = "center";
 	ctx.textBaseline = "middle";
-	ctx.fillText("Game Over - You scoyellow "+points+" points!", W/2, H/2 + 25 );
+	ctx.fillText("Game Over - You scored "+points+" points!", W/2, H/2 + 25 );
 	
 	// Stop the Animation
 	cancelRequestAnimFrame(init);

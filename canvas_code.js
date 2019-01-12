@@ -43,12 +43,12 @@ var canvas = document.getElementById("canvas"),
 		over = 0, // flag varialbe, cahnged when the game is over
 		init, // variable to initialize animation
 		paddleHit;
-		
+
 	// Helps adjust game window size when resizing browser
 	var ctx = document.querySelector('canvas').getContext('2d');
 	window.addEventListener('resize',function(){
-  		var width  = calculateDesiredWidth();  // your code here
-  		var height = calculateDesiredHeight(); // your code here
+  		var width  = calculateDesiyellowWidth();  // your code here
+  		var height = calculateDesiyellowHeight(); // your code here
   		ctx.canvas.width  = width;
   		ctx.canvas.height = height;
   		ctx.translate(width/2,height/2); // now 0,0 is the center of the canvas.
@@ -92,7 +92,7 @@ ball = {
 	x: 50,
 	y: 50, 
 	r: 5,
-	c: "red",
+	c: "yellow",
 	vx: 4,
 	vy: 8,
 	
@@ -121,7 +121,7 @@ startBtn = {
 		ctx.font = "18px Arial, sans-serif";
 		ctx.textAlign = "center";
 		ctx.textBaseline = "middle";
-		ctx.fillStlye = "red";
+		ctx.fillStlye = "yellow";
 		ctx.fillText("Start", W/2, H/2 );
 	}
 };
@@ -134,14 +134,14 @@ restartBtn = {
 	y: H/2 - 50,
 	
 	draw: function() {
-		ctx.strokeStyle = "red";
+		ctx.strokeStyle = "yellow";
 		ctx.lineWidth = "2";
 		ctx.strokeRect(this.x, this.y, this.w, this.h);
 		
 		ctx.font = "18px Arial, sans-serif";
 		ctx.textAlign = "center";
 		ctx.textBaseline = "middle";
-		ctx.fillStlye = "red";
+		ctx.fillStlye = "yellow";
 		ctx.fillText("Restart", W/2, H/2 - 25 );
 	}
 };
@@ -163,7 +163,7 @@ function draw() {
 	for(var i = 0; i < paddles.length; i++) {
 		p = paddles[i];
 		
-		ctx.fillStyle = "red";
+		ctx.fillStyle = "yellow";
 		ctx.fillRect(p.x, p.y, p.w, p.h);
 	}
 	
@@ -322,7 +322,7 @@ function emitParticles() {
 		par = particles[j];
 		
 		ctx.beginPath(); 
-		ctx.fillStyle = "red";
+		ctx.fillStyle = "yellow";
 		if (par.radius > 0) {
 			ctx.arc(par.x, par.y, par.radius, 0, Math.PI*2, false);
 		}
@@ -331,7 +331,7 @@ function emitParticles() {
 		par.x += par.vx; 
 		par.y += par.vy; 
 		
-		// reduce radius so that the particles die after a few seconds
+		// yellowuce radius so that the particles die after a few seconds
 		par.radius = Math.max(par.radius - 0.05, 0.0); 
 		
 	} 
@@ -339,7 +339,7 @@ function emitParticles() {
 
 // Function for updating score
 function updateScore() {
-	ctx.fillStlye = "red";
+	ctx.fillStlye = "yellow";
 	ctx.font = "16px Arial, sans-serif";
 	ctx.textAlign = "left";
 	ctx.textBaseline = "top";
@@ -348,11 +348,11 @@ function updateScore() {
 
 // Function to run when the game overs
 function gameOver() {
-	ctx.fillStlye = "red";
+	ctx.fillStlye = "yellow";
 	ctx.font = "20px Arial, sans-serif";
 	ctx.textAlign = "center";
 	ctx.textBaseline = "middle";
-	ctx.fillText("Game Over - You scored "+points+" points!", W/2, H/2 + 25 );
+	ctx.fillText("Game Over - You scoyellow "+points+" points!", W/2, H/2 + 25 );
 	
 	// Stop the Animation
 	cancelRequestAnimFrame(init);

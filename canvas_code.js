@@ -45,14 +45,14 @@ var canvas = document.getElementById("canvas"),
 		paddleHit;
 
 	// Helps adjust game window size when resizing browser
-	var ctx = document.querySelector('canvas').getContext('2d');
+	/*var ctx = document.querySelector('canvas').getContext('2d');
 	window.addEventListener('resize',function(){
   		var width  = calculateDesiredWidth();  // your code here
   		var height = calculateDesiredHeight(); // your code here
   		ctx.canvas.width  = width;
   		ctx.canvas.height = height;
   		ctx.translate(width/2,height/2); // now 0,0 is the center of the canvas.
-	},false);
+	},false);*/
 
 // Add mousemove and mousedown events to the canvas
 canvas.addEventListener("mousemove", trackPosition, true);

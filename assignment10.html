@@ -36,8 +36,8 @@
         }
         #canvas {
             text-align: center;
-            width: 100%;
-            height: 50%;
+            width: 1450px;
+            height: 750px;
         }
     </style>
     
@@ -45,17 +45,30 @@
 <body>
     <h1 align="center">Using Canvas to play Ping Pong</h1><hr>
 
-    <p id="p1">This page shows how to use Canvas in a unique way! Play ping pong!
-        <br> Scroll down until your entire page is filled with the game screen, then click anywhere to play.
+    <p id="p1">This page shows how to use Canvas in a unique way... by playing ping pong!
+        <br> Scroll down past the game to see an example of showing videos in HTML5 as well.</p><br>
+
+    <h2 align="center">How to Play</h2>
+    <p id="p1">Scroll down until your entire page is filled with the game screen, then click anywhere to play.
         <br> Moving the mouse controls the paddle on top and bottom. Keep the ball in play to score points.</p>
-    <!-- Canvas area for the ping pong game -->
-    <canvas id="canvas" align: center;></canvas>
-        <!-- Sound effects for the game -->
-        <audio preload="true" id="collide">
-        <source src="https://dl.dropbox.com/u/26141789/canvas/pingpong/Metal%20Cling%20-%20Hit.mp3" />
-        <source src="https://dl.dropbox.com/u/26141789/canvas/pingpong/Metal%20Cling%20-%20Hit.wav" />
-    </audio>
-    <br /><p id="p1">This is just filler area to help with the scroll-bar!</p><br>
+    <!-- Helps center the game -->
+    <div class="div1">
+        <!-- Canvas area for the ping pong game -->
+        <canvas id="canvas" align: center;></canvas>
+            <!-- Sound effects for the game -->
+            <audio preload="true" id="collide">
+                <source src="https://dl.dropbox.com/u/26141789/canvas/pingpong/Metal%20Cling%20-%20Hit.mp3" />
+                <source src="https://dl.dropbox.com/u/26141789/canvas/pingpong/Metal%20Cling%20-%20Hit.wav" />
+            </audio>
+    </div>
+
+    <hr><h2 align="center">Example of how to use HTML5 to display Video and Audio!</h2>
+    <p id="p1">Click play to see the video clip below, sound included!</p><br>
+    <div class="div1">
+        <video width="1024" height="576" controls>
+            <source src="goodDog.mp4" type="video/mp4">
+        </video>
+    </div>
 
 <script type="text/javascript" src="canvas_code.js"></script>
 </body>

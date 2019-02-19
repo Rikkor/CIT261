@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dom Manipulation</title>
+	<style>
+		.button {
+    		background-color: #363636;
+    		border: none;
+    		color: white;
+    		padding: 15px 25px;
+    		text-align: center;
+    		font-size: 16px;
+    		cursor: pointer;
+		}
+
+		.button:hover {
+    		background-color: #000000;
+		}
+		#p1, h2 {
+			text-align: center;
+		}
+		.div1 {
+			text-align: center;
+		}
+		body {
+			background-color: lightgrey;
+		}
+		ul {
+			text-align: center;
+			list-style-position: inside;
+		}
+	</style>
+</head>
+<body>
+	<h1 align="center">Dom Manipulation</h1>
+
+	<p id="p1">Change Later</p><br><hr>
+
+	<!--This section is for changing text colors and fonts-->
+	<h2>Changing Text with CSS through JavaScript</h2>
+	<div class="div1">
+		<p id="p2">Also change later</p>
+  		<div class="btn-group" style="width:100%">
+  			<button onclick="functionOne()" class="button">Water</button>
+  			<button onclick="functionTwo()" class="button">Fire</button>
+  			<button onclick="loopFunction()" class="button">Loop Through List</button>
+		</div>
+	</div><br><hr>
+
+	<!--This section is for changing picture sizes-->
+		<table>
+			<tr>
+				<td id="sound">Sound #1
+					<button id="sound1">Click me</td>
+				<td id="sound2">Sound #2</td>
+			</tr>
+		</table>
+
+		<ul id="soundList">
+		  <li>Coffee</li>
+		  <li>Tea</li>
+		</ul>
+		<p id="outputText"></p>
+
+	<audio id="soundClip1">
+		<source src="/sounds/c4.mp3" type="audio/mp3">
+		Your browser does not support the audio element.
+	</audio>
+	<script>
+	function functionOne() {
+	  var node = document.createElement("LI");
+	  var textnode = document.createTextNode("Water");
+	  node.appendChild(textnode);
+	  document.getElementById("soundList").appendChild(node);
+	}
+	function functionTwo() {
+	  var node = document.createElement("LI");
+	  var textnode = document.createTextNode("Fire");
+	  node.appendChild(textnode);
+	  document.getElementById("soundList").appendChild(node);
+	}
+
+	function loopFunction() {
+		var ulList = document.getElementById("soundList");
+		var listItems = ulList.getElementsByTagName("li");
+
+		for (var i = 0; i < listItems.length; ++i) {
+			switch (listItems.item(i).innerHTML) {
+	  			case "Water":
+	  				document.getElementById("outputText").innerHTML += listItems.item(i).innerHTML + " ";
+	  				break;
+	  			case "Fire": 
+	  				document.getElementById("outputText").innerHTML += listItems.item(i).innerHTML + " ";
+	  		}
+		}
+	}
+
+	document.getElementById("sound1").addEventListener("click", playSound1());
+
+	function playSound1() {
+ 		document.getElementById("soundClip1").play(); 
+	}
+	</script>
+
+</body>
+</html>

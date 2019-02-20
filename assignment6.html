@@ -71,6 +71,7 @@
 		<p id="outputText"></p>
 	</div>
 
+	<!-- HTML side for providing the soundclip information-->
 	<audio id="soundClipC4">
 		<source src="sounds/c4.mp3" type="audio/mp3">
 		Your browser does not support the audio element.
@@ -156,6 +157,7 @@
 	document.getElementById("playPlaylist").addEventListener("click", loopFunction);
 	// loop function for soundboarding of notes
 	function loopFunction() {
+		// throw soundlist UL/LI into variables
 		var ulList = document.getElementById("soundList");
 		var listItems = ulList.getElementsByTagName("li");
 
@@ -194,7 +196,6 @@
 	  		}
 		}
 	}
-
 	//document.getElementById("outputText").innerHTML += listItems.item(i).innerHTML + " ";
 
 	// set volume as it was WAY too loud before
@@ -205,7 +206,6 @@
 	document.getElementById("soundClipG4").volume = 0.15;
 	document.getElementById("soundClipA4").volume = 0.15;
 	document.getElementById("soundClipB4").volume = 0.15;
-
 
 	// code to play each sound clip
 	// Sound clip code for C4
@@ -230,7 +230,6 @@
 	document.getElementById("soundB4").addEventListener("click", playB4);
 	function playB4() { document.getElementById("soundClipB4").play(); }
 
-
 	// reset the playlist, then refresh the page
 	document.getElementById("resetPlaylist").addEventListener("click", clearList);
 	function clearList() {
@@ -239,6 +238,5 @@
 		location.reload();
 	}
 	</script>
-
 </body>
 </html>

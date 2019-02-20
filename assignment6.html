@@ -12,42 +12,34 @@
     		font-size: 14px;
     		cursor: pointer;
 		}
-
 		.button:hover {
     		background-color: #000000;
 		}
 		#p1, h2 {
 			text-align: center;
 		}
-		.div1 {
-			text-align: center;
-		}
-		body {
-			background-color: lightgrey;
-		}
+		.div1 { text-align: center; }
+		body { background-color: lightgrey; }
 		ul {
 			text-align: center;
 			list-style-position: inside;
 		}
 		td { text-align: center; }
-		#p2 {
-			font-size: 24px;
-		}
+		#p2 { font-size: 24px; }
 	</style>
 </head>
 <body>
 	<h1 align="center">Dom Manipulation/Javascript Events</h1>
-
 	<p id="p1">This page shows how Javascript events such as addEventListener and Dom Manipulation works.</p><br><hr>
 
-	<!--This section is for changing text colors and fonts-->
+	<!--Intro for piano stuff-->
 	<h2>Mini-Piano Soundboard</h2>
 	<div class="div1">
 		<p id="p1">Click on each note text to play the note, or add to playlist and loop through any notes you desire!</p>
 		</div>
 	</div><br>
 
-	<!--Piano Soundboard-->
+	<!--Piano Soundboard HTML-->
 		<table align="center">
 			<tr id="p2">
 				<td id="soundC4">C4</td>
@@ -69,6 +61,7 @@
 			</tr>
 		</table><hr>
 	<div align="center">
+		<!-- Music Playlist buttons -->
 		<h2>Music Playlist</h2>
 		<button id="playPlaylist" class="button">Play through Playlist</button>
 		<button class="button" id="resetPlaylist">Reset Playlist</button>
@@ -108,7 +101,7 @@
 	</audio>
 
 	<script>
-	// code for creating UL item for each note
+	// code for creating the UL item for each note
 	document.getElementById("buttonC4").addEventListener("click", playlistC4);
 	function playlistC4() {
 	  var node = document.createElement("LI");
@@ -213,6 +206,8 @@
 	document.getElementById("soundClipA4").volume = 0.15;
 	document.getElementById("soundClipB4").volume = 0.15;
 
+
+	// code to play each sound clip
 	// Sound clip code for C4
 	document.getElementById("soundC4").addEventListener("click", playC4);
 	function playC4() { document.getElementById("soundClipC4").play(); }
@@ -235,6 +230,8 @@
 	document.getElementById("soundB4").addEventListener("click", playB4);
 	function playB4() { document.getElementById("soundClipB4").play(); }
 
+
+	// reset the playlist, then refresh the page
 	document.getElementById("resetPlaylist").addEventListener("click", clearList);
 	function clearList() {
 		element = document.getElementById("soundList");

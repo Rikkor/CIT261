@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Dom Manipulation</title>
+	<title>Dom Manipulation/Javascript Events</title>
 	<style>
 		.button {
     		background-color: #363636;
     		border: none;
     		color: white;
-    		padding: 15px 25px;
+    		padding: 10px 15px;
     		text-align: center;
-    		font-size: 16px;
+    		font-size: 14px;
     		cursor: pointer;
 		}
 
@@ -29,76 +29,217 @@
 			text-align: center;
 			list-style-position: inside;
 		}
+		td { text-align: center; }
+		#p2 {
+			font-size: 24px;
+		}
 	</style>
 </head>
 <body>
-	<h1 align="center">Dom Manipulation</h1>
+	<h1 align="center">Dom Manipulation/Javascript Events</h1>
 
-	<p id="p1">Change Later</p><br><hr>
+	<p id="p1">This page shows how Javascript events such as addEventListener and Dom Manipulation works.</p><br><hr>
 
 	<!--This section is for changing text colors and fonts-->
-	<h2>Changing Text with CSS through JavaScript</h2>
+	<h2>Mini-Piano Soundboard</h2>
 	<div class="div1">
-		<p id="p2">Also change later</p>
-  		<div class="btn-group" style="width:100%">
-  			<button onclick="functionOne()" class="button">Water</button>
-  			<button onclick="functionTwo()" class="button">Fire</button>
-  			<button onclick="loopFunction()" class="button">Loop Through List</button>
+		<p id="p1">Click on each note text to play the note, or add to playlist and loop through any notes you desire!</p>
 		</div>
-	</div><br><hr>
+	</div><br>
 
-	<!--This section is for changing picture sizes-->
-		<table>
-			<tr>
-				<td id="sound">Sound #1
-					<button id="sound1">Click me</td>
-				<td id="sound2">Sound #2</td>
+	<!--Piano Soundboard-->
+		<table align="center">
+			<tr id="p2">
+				<td id="soundC4">C4</td>
+				<td id="soundD4">D4</td>
+				<td id="soundE4">E4</td>
+				<td id="soundF4">F4</td>
+				<td id="soundG4">G4</td>
+				<td id="soundA4">A4</td>
+				<td id="soundB4">B4</td>
 			</tr>
-		</table>
+			<tr>
+				<td><button class="button" id="buttonC4">Add to playlist</button></td>
+				<td><button class="button" id="buttonD4">Add to playlist</button></td>
+				<td><button class="button" id="buttonE4">Add to playlist</button></td>
+				<td><button class="button" id="buttonF4">Add to playlist</button></td>
+				<td><button class="button" id="buttonG4">Add to playlist</button></td>
+				<td><button class="button" id="buttonA4">Add to playlist</button></td>
+				<td><button class="button" id="buttonB4">Add to playlist</button></td>
+			</tr>
+		</table><hr>
+	<div align="center">
+		<h2>Music Playlist</h2>
+		<button id="playPlaylist" class="button">Play through Playlist</button>
+		<button class="button" id="resetPlaylist">Reset Playlist</button>
 
-		<ul id="soundList">
-		  <li>Coffee</li>
-		  <li>Tea</li>
-		</ul>
+		<!-- Notes for playlist appear here -->
+		<ul id="soundList"></ul>
 		<p id="outputText"></p>
+	</div>
 
-	<audio id="soundClip1">
-		<source src="/sounds/c4.mp3" type="audio/mp3">
+	<audio id="soundClipC4">
+		<source src="sounds/c4.mp3" type="audio/mp3">
 		Your browser does not support the audio element.
 	</audio>
+	<audio id="soundClipD4">
+		<source src="sounds/d4.mp3" type="audio/mp3">
+		Your browser does not support the audio element.
+	</audio>
+	<audio id="soundClipE4">
+		<source src="sounds/e4.mp3" type="audio/mp3">
+		Your browser does not support the audio element.
+	</audio>
+	<audio id="soundClipF4">
+		<source src="sounds/f4.mp3" type="audio/mp3">
+		Your browser does not support the audio element.
+	</audio>
+	<audio id="soundClipG4">
+		<source src="sounds/g4.mp3" type="audio/mp3">
+		Your browser does not support the audio element.
+	</audio>
+	<audio id="soundClipA4">
+		<source src="sounds/a4.mp3" type="audio/mp3">
+		Your browser does not support the audio element.
+	</audio>
+	<audio id="soundClipB4">
+		<source src="sounds/b4.mp3" type="audio/mp3">
+		Your browser does not support the audio element.
+	</audio>
+
 	<script>
-	function functionOne() {
+	// code for creating UL item for each note
+	document.getElementById("buttonC4").addEventListener("click", playlistC4);
+	function playlistC4() {
 	  var node = document.createElement("LI");
-	  var textnode = document.createTextNode("Water");
+	  var textnode = document.createTextNode("C4");
 	  node.appendChild(textnode);
 	  document.getElementById("soundList").appendChild(node);
 	}
-	function functionTwo() {
+	document.getElementById("buttonD4").addEventListener("click", playlistD4);
+	function playlistD4() {
 	  var node = document.createElement("LI");
-	  var textnode = document.createTextNode("Fire");
+	  var textnode = document.createTextNode("D4");
+	  node.appendChild(textnode);
+	  document.getElementById("soundList").appendChild(node);
+	}
+	document.getElementById("buttonE4").addEventListener("click", playlistE4);
+	function playlistE4() {
+	  var node = document.createElement("LI");
+	  var textnode = document.createTextNode("E4");
+	  node.appendChild(textnode);
+	  document.getElementById("soundList").appendChild(node);
+	}
+	document.getElementById("buttonF4").addEventListener("click", playlistF4);
+	function playlistF4() {
+	  var node = document.createElement("LI");
+	  var textnode = document.createTextNode("F4");
+	  node.appendChild(textnode);
+	  document.getElementById("soundList").appendChild(node);
+	}
+	document.getElementById("buttonG4").addEventListener("click", playlistG4);
+	function playlistG4() {
+	  var node = document.createElement("LI");
+	  var textnode = document.createTextNode("G4");
+	  node.appendChild(textnode);
+	  document.getElementById("soundList").appendChild(node);
+	}
+	document.getElementById("buttonA4").addEventListener("click", playlistA4);
+	function playlistA4() {
+	  var node = document.createElement("LI");
+	  var textnode = document.createTextNode("A4");
+	  node.appendChild(textnode);
+	  document.getElementById("soundList").appendChild(node);
+	}
+	document.getElementById("buttonB4").addEventListener("click", playlistB4);
+	function playlistB4() {
+	  var node = document.createElement("LI");
+	  var textnode = document.createTextNode("B4");
 	  node.appendChild(textnode);
 	  document.getElementById("soundList").appendChild(node);
 	}
 
+	// set button to play the loopFunction()
+	document.getElementById("playPlaylist").addEventListener("click", loopFunction);
+	// loop function for soundboarding of notes
 	function loopFunction() {
 		var ulList = document.getElementById("soundList");
 		var listItems = ulList.getElementsByTagName("li");
 
+		// timer to help space out the notes
+		var timer = 0;
+		// loop through li list to play each note
 		for (var i = 0; i < listItems.length; ++i) {
 			switch (listItems.item(i).innerHTML) {
-	  			case "Water":
-	  				document.getElementById("outputText").innerHTML += listItems.item(i).innerHTML + " ";
+	  			case "C4":
+	  				setTimeout(function() { playC4(); }, timer)
+	  				timer += 400;
 	  				break;
-	  			case "Fire": 
-	  				document.getElementById("outputText").innerHTML += listItems.item(i).innerHTML + " ";
+	  			case "D4": 
+	  				setTimeout(function() { playD4(); }, timer)
+	  				timer += 400;
+	  				break;
+	  			case "E4":
+	  				setTimeout(function() { playE4(); }, timer)
+	  				timer += 400;
+	  				break;
+	  			case "F4":
+	  				setTimeout(function() { playF4(); }, timer)
+	  				timer += 400;
+	  				break;
+	  			case "G4": 
+	  				setTimeout(function() { playG4(); }, timer)
+	  				timer += 400;
+	  				break;
+	  			case "A4":
+	  				setTimeout(function() { playA4(); }, timer)
+	  				timer += 400;
+	  				break;
+	  			case "B4": 
+	  				setTimeout(function() { playB4(); }, timer)
+	  				timer += 400;
 	  		}
 		}
 	}
 
-	document.getElementById("sound1").addEventListener("click", playSound1());
+	//document.getElementById("outputText").innerHTML += listItems.item(i).innerHTML + " ";
 
-	function playSound1() {
- 		document.getElementById("soundClip1").play(); 
+	// set volume as it was WAY too loud before
+	document.getElementById("soundClipC4").volume = 0.15;
+	document.getElementById("soundClipD4").volume = 0.15;
+	document.getElementById("soundClipE4").volume = 0.15;
+	document.getElementById("soundClipF4").volume = 0.15;
+	document.getElementById("soundClipG4").volume = 0.15;
+	document.getElementById("soundClipA4").volume = 0.15;
+	document.getElementById("soundClipB4").volume = 0.15;
+
+	// Sound clip code for C4
+	document.getElementById("soundC4").addEventListener("click", playC4);
+	function playC4() { document.getElementById("soundClipC4").play(); }
+	// Sound clip code for D4
+	document.getElementById("soundD4").addEventListener("click", playD4);
+	function playD4() { document.getElementById("soundClipD4").play(); }
+	// Sound clip code for E4
+	document.getElementById("soundE4").addEventListener("click", playE4);
+	function playE4() { document.getElementById("soundClipE4").play(); }
+	// Sound clip code for F4
+	document.getElementById("soundF4").addEventListener("click", playF4);
+	function playF4() { document.getElementById("soundClipF4").play(); }
+	// Sound clip code for G4
+	document.getElementById("soundG4").addEventListener("click", playG4);
+	function playG4() { document.getElementById("soundClipG4").play(); }
+	// Sound clip code for A4
+	document.getElementById("soundA4").addEventListener("click", playA4);
+	function playA4() { document.getElementById("soundClipA4").play(); }
+	// Sound clip code for B4
+	document.getElementById("soundB4").addEventListener("click", playB4);
+	function playB4() { document.getElementById("soundClipB4").play(); }
+
+	document.getElementById("resetPlaylist").addEventListener("click", clearList);
+	function clearList() {
+		element = document.getElementById("soundList");
+		element.parentNode.removeChild(element);
+		location.reload();
 	}
 	</script>
 

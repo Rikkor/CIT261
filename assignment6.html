@@ -15,7 +15,7 @@
 		.button:hover {
     		background-color: #000000;
 		}
-		#p1, h2 {
+		#p1, h2, #centeredText {
 			text-align: center;
 		}
 		.div1 { text-align: center; }
@@ -26,6 +26,60 @@
 		}
 		td { text-align: center; }
 		#p2 { font-size: 24px; }
+		* { box-sizing:border-box; }
+		.pianoSet {
+			height:20em; width:32em;
+		  	margin:5em auto; padding:2em 0 0 3em; position:relative; 
+		  	border:1px solid #160801; border-radius:1em; 
+			box-shadow:0 0 50px rgba(0,0,0,0.5) inset, 0 1px rgba(212,152,125,0.2) inset,0 5px 15px rgba(0,0,0,0.5); }
+		#pianoKeys1, #pianoKeys2, #pianoKeys3, #pianoKeys4, #pianoKeys5, #pianoKeys6, #pianoKeys7,
+		#pianoKeys8, #pianoKeys9, #pianoKeys10, #pianoKeys11, #pianoKeys12 {
+			position:relative; 
+			float:left;
+			list-style:none;
+		}
+		ul .white {
+			height:16em; width:4em; z-index:1;
+			border-left:1px solid #bbb;
+			border-bottom:1px solid #bbb;
+			border-radius:0 0 5px 5px;
+			box-shadow:-1px 0 0 rgba(255,255,255,0.8) inset, 0 0 5px #ccc inset, 0 0 3px rgba(0,0,0,0.2);
+			background: linear-gradient(top, #eee 0%,#fff 100%);
+		}
+		ul .white:active {
+			border-top:1px solid #777;
+			border-left:1px solid #999;
+			border-bottom:1px solid #999;
+			box-shadow:2px 0 3px rgba(0,0,0,0.1) inset, -5px 5px 20px rgba(0,0,0,0.2) inset,0 0 3px rgba(0,0,0,0.2);
+			background: linear-gradient(top, #fff 0%,#e9e9e9 100%);
+		}
+		.whiteButton {
+			border-top:1px solid #777;
+			border-left:1px solid #999;
+			border-bottom:1px solid #999;
+			box-shadow:2px 0 3px rgba(0,0,0,0.1) inset, -5px 5px 20px rgba(0,0,0,0.2) inset,0 0 3px rgba(0,0,0,0.2);
+			background: #707070;
+		}
+		.black {
+			height:8em; width:2em; margin:0 0 0 -1em; z-index:2;
+			border:1px solid #000;
+			border-radius:0 0 3px 3px;
+			box-shadow:-1px -1px 2px rgba(255,255,255,0.2) inset, 0 -5px 2px 3px rgba(0,0,0,0.6) inset, 0 2px 4px rgba(0,0,0,0.5);
+			background:linear-gradient(45deg, #222 0%,#555 100%);
+		}
+		.black:active, {
+			box-shadow:-1px -1px 2px rgba(255,255,255,0.2) inset, 0 -2px 2px 3px rgba(0,0,0,0.6) inset, 0 1px 2px rgba(0,0,0,0.5);
+			background:linear-gradient(left, #444 0%,#222 100%);
+		}
+		.blackButton {
+			box-shadow:-1px -1px 2px rgba(255,255,255,0.2) inset, 0 -2px 2px 3px rgba(0,0,0,0.6) inset, 0 1px 2px rgba(0,0,0,0.5);
+			background: #707070;
+		}
+		.e,.g,.a,.b,.c,.d { margin:0 0 0 -1em; }
+		ul li:first-child { border-radius:5px 0 5px 5px; }
+		ul li:last-child { border-radius:0 5px 5px 5px; }
+		.highlight { color: yellow; }
+		#highlight { color: yellow; }
 	</style>
 </head>
 <body>
@@ -35,12 +89,44 @@
 	<!--Intro for piano stuff-->
 	<h2>Mini-Piano Soundboard</h2>
 	<div class="div1">
-		<p id="p1">Click on each note text to play the note, or add to playlist and loop through any notes you desire!</p>
-		</div>
-	</div><br>
+		<p id="p1">Click on each note text to play the note, or add to playlist and loop through any notes you desire!
+			<br>You can also click on the piano notes to play those as well.</p>
+	</div>
 
+	<ul class="pianoSet">
+  		<li class="white c"  id="pianoKeys1" name="pkC4"></li>
+		<li class="black cs" id="pianoKeys2"></li>
+		<li class="white d"  id="pianoKeys3"></li>
+		<li class="black ds" id="pianoKeys4"></li>
+		<li class="white e"  id="pianoKeys5"></li>
+		<li class="white f"  id="pianoKeys6"></li>
+		<li class="black fs" id="pianoKeys7"></li>
+		<li class="white g"  id="pianoKeys8"></li>
+		<li class="black gs" id="pianoKeys9"></li>
+		<li class="white a"  id="pianoKeys10"></li>
+		<li class="black as" id="pianoKeys11"></li>
+		<li class="white b"  id="pianoKeys12"></li>
+	</ul>
 	<!--Piano Soundboard HTML-->
 		<table align="center">
+			<tr id="p2">
+				<td></td>
+				<td id="soundC4S">C4 Sharp</td>
+				<td id="soundD4S">D4 Sharp</td>
+				<td></td>
+				<td id="soundF4S">F4 Sharp</td>
+				<td id="soundG4S">G4 Sharp</td>
+				<td id="soundA4S">A4 Sharp</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><button class="button" id="buttonC4S">Add to playlist</button></td>
+				<td><button class="button" id="buttonD4S">Add to playlist</button></td>
+				<td></td>
+				<td><button class="button" id="buttonF4S">Add to playlist</button></td>
+				<td><button class="button" id="buttonG4S">Add to playlist</button></td>
+				<td><button class="button" id="buttonA4S">Add to playlist</button></td>
+			</tr>
 			<tr id="p2">
 				<td id="soundC4">C4</td>
 				<td id="soundD4">D4</td>
@@ -68,7 +154,7 @@
 
 		<!-- Notes for playlist appear here -->
 		<ul id="soundList"></ul>
-		<p id="outputText"></p>
+		<p id="outputText"></p><br><br>
 	</div>
 
 	<!-- HTML side for providing the soundclip information-->
@@ -100,8 +186,32 @@
 		<source src="sounds/b4.mp3" type="audio/mp3">
 		Your browser does not support the audio element.
 	</audio>
+	<!--Sharp Notes Audio-->
+	<audio id="soundClipC4S">
+		<source src="sounds/c4s.mp3" type="audio/mp3">
+		Your browser does not support the audio element.
+	</audio>
+	<audio id="soundClipD4S">
+		<source src="sounds/d4s.mp3" type="audio/mp3">
+		Your browser does not support the audio element.
+	</audio>
+	<audio id="soundClipF4S">
+		<source src="sounds/f4s.mp3" type="audio/mp3">
+		Your browser does not support the audio element.
+	</audio>
+	<audio id="soundClipG4S">
+		<source src="sounds/g4s.mp3" type="audio/mp3">
+		Your browser does not support the audio element.
+	</audio>
+	<audio id="soundClipA4S">
+		<source src="sounds/a4s.mp3" type="audio/mp3">
+		Your browser does not support the audio element.
+	</audio>
 
 	<script>
+	// save for later
+	//document.getElementById("soundList").appendChild(document.createElement("br"));
+
 	// code for creating the UL item for each note
 	document.getElementById("buttonC4").addEventListener("click", playlistC4);
 	function playlistC4() {
@@ -109,13 +219,16 @@
 	  var textnode = document.createTextNode("C4");
 	  node.appendChild(textnode);
 	  document.getElementById("soundList").appendChild(node);
+	  window.scrollBy(0, 18);
 	}
+
 	document.getElementById("buttonD4").addEventListener("click", playlistD4);
 	function playlistD4() {
 	  var node = document.createElement("LI");
 	  var textnode = document.createTextNode("D4");
 	  node.appendChild(textnode);
 	  document.getElementById("soundList").appendChild(node);
+	  window.scrollBy(0, 18);
 	}
 	document.getElementById("buttonE4").addEventListener("click", playlistE4);
 	function playlistE4() {
@@ -123,6 +236,7 @@
 	  var textnode = document.createTextNode("E4");
 	  node.appendChild(textnode);
 	  document.getElementById("soundList").appendChild(node);
+	  window.scrollBy(0, 18);
 	}
 	document.getElementById("buttonF4").addEventListener("click", playlistF4);
 	function playlistF4() {
@@ -130,6 +244,7 @@
 	  var textnode = document.createTextNode("F4");
 	  node.appendChild(textnode);
 	  document.getElementById("soundList").appendChild(node);
+	  window.scrollBy(0, 18);
 	}
 	document.getElementById("buttonG4").addEventListener("click", playlistG4);
 	function playlistG4() {
@@ -137,6 +252,7 @@
 	  var textnode = document.createTextNode("G4");
 	  node.appendChild(textnode);
 	  document.getElementById("soundList").appendChild(node);
+	  window.scrollBy(0, 18);
 	}
 	document.getElementById("buttonA4").addEventListener("click", playlistA4);
 	function playlistA4() {
@@ -144,6 +260,7 @@
 	  var textnode = document.createTextNode("A4");
 	  node.appendChild(textnode);
 	  document.getElementById("soundList").appendChild(node);
+	  window.scrollBy(0, 18);
 	}
 	document.getElementById("buttonB4").addEventListener("click", playlistB4);
 	function playlistB4() {
@@ -151,6 +268,48 @@
 	  var textnode = document.createTextNode("B4");
 	  node.appendChild(textnode);
 	  document.getElementById("soundList").appendChild(node);
+	  window.scrollBy(0, 18);
+	}
+	// sharp notes
+	document.getElementById("buttonC4S").addEventListener("click", playlistC4S);
+	function playlistC4S() {
+	  var node = document.createElement("LI");
+	  var textnode = document.createTextNode("C4 Sharp");
+	  node.appendChild(textnode);
+	  document.getElementById("soundList").appendChild(node);
+	  window.scrollBy(0, 18);
+	}
+	document.getElementById("buttonD4S").addEventListener("click", playlistD4S);
+	function playlistD4S() {
+	  var node = document.createElement("LI");
+	  var textnode = document.createTextNode("D4 Sharp");
+	  node.appendChild(textnode);
+	  document.getElementById("soundList").appendChild(node);
+	  window.scrollBy(0, 18);
+	}
+	document.getElementById("buttonF4S").addEventListener("click", playlistF4S);
+	function playlistF4S() {
+	  var node = document.createElement("LI");
+	  var textnode = document.createTextNode("F4 Sharp");
+	  node.appendChild(textnode);
+	  document.getElementById("soundList").appendChild(node);
+	  window.scrollBy(0, 18);
+	}
+	document.getElementById("buttonG4S").addEventListener("click", playlistG4S);
+	function playlistG4S() {
+	  var node = document.createElement("LI");
+	  var textnode = document.createTextNode("G4 Sharp");
+	  node.appendChild(textnode);
+	  document.getElementById("soundList").appendChild(node);
+	  window.scrollBy(0, 18);
+	}
+	document.getElementById("buttonA4S").addEventListener("click", playlistA4S);
+	function playlistA4S() {
+	  var node = document.createElement("LI");
+	  var textnode = document.createTextNode("A4 Sharp");
+	  node.appendChild(textnode);
+	  document.getElementById("soundList").appendChild(node);
+	  window.scrollBy(0, 18);
 	}
 
 	// set button to play the loopFunction()
@@ -168,31 +327,52 @@
 			switch (listItems.item(i).innerHTML) {
 	  			case "C4":
 	  				setTimeout(function() { playC4(); }, timer)
-	  				timer += 400;
+	  				timer += 500;
 	  				break;
 	  			case "D4": 
 	  				setTimeout(function() { playD4(); }, timer)
-	  				timer += 400;
+	  				timer += 500;
 	  				break;
 	  			case "E4":
 	  				setTimeout(function() { playE4(); }, timer)
-	  				timer += 400;
+	  				timer += 500;
 	  				break;
 	  			case "F4":
 	  				setTimeout(function() { playF4(); }, timer)
-	  				timer += 400;
+	  				timer += 500;
 	  				break;
-	  			case "G4": 
+	  			case "G4":
 	  				setTimeout(function() { playG4(); }, timer)
-	  				timer += 400;
+	  				timer += 500;
 	  				break;
 	  			case "A4":
 	  				setTimeout(function() { playA4(); }, timer)
-	  				timer += 400;
+	  				timer += 500;
 	  				break;
-	  			case "B4": 
+	  			case "B4":
 	  				setTimeout(function() { playB4(); }, timer)
-	  				timer += 400;
+	  				timer += 500;
+	  				break;
+	  			case "C4 Sharp":
+	  				setTimeout(function() { playC4S(); }, timer)
+	  				timer += 500;
+	  				break;
+	  			case "D4 Sharp":
+	  				setTimeout(function() { playD4S(); }, timer)
+	  				timer += 500;
+	  				break;
+	  			case "F4 Sharp":
+	  				setTimeout(function() { playF4S(); }, timer)
+	  				timer += 500;
+	  				break;
+	  			case "G4 Sharp":
+	  				setTimeout(function() { playG4S(); }, timer)
+	  				timer += 500;
+	  				break;
+	  			case "A4 Sharp":
+	  				setTimeout(function() { playA4S(); }, timer)
+	  				timer += 500;
+	  				break;
 	  		}
 		}
 	}
@@ -206,29 +386,103 @@
 	document.getElementById("soundClipG4").volume = 0.15;
 	document.getElementById("soundClipA4").volume = 0.15;
 	document.getElementById("soundClipB4").volume = 0.15;
+	document.getElementById("soundClipC4S").volume = 0.15;
+	document.getElementById("soundClipD4S").volume = 0.15;
+	document.getElementById("soundClipF4S").volume = 0.15;
+	document.getElementById("soundClipG4S").volume = 0.15;
+	document.getElementById("soundClipA4S").volume = 0.15;
 
 	// code to play each sound clip
 	// Sound clip code for C4
 	document.getElementById("soundC4").addEventListener("click", playC4);
-	function playC4() { document.getElementById("soundClipC4").play(); }
+	document.getElementById("pianoKeys1").addEventListener("click", playC4);
+	function playC4() { 
+		document.getElementById("soundClipC4").play(); 
+		setTimeout(function() { document.getElementById("pianoKeys1").classList.add("whiteButton"); }, 0);
+	  	setTimeout(function() { document.getElementById("pianoKeys1").classList.remove("whiteButton"); }, 500);
+	}
 	// Sound clip code for D4
 	document.getElementById("soundD4").addEventListener("click", playD4);
-	function playD4() { document.getElementById("soundClipD4").play(); }
+	document.getElementById("pianoKeys3").addEventListener("click", playD4);
+	function playD4() { 
+		document.getElementById("soundClipD4").play();
+		setTimeout(function() { document.getElementById("pianoKeys3").classList.add("whiteButton"); }, 0);
+	  	setTimeout(function() { document.getElementById("pianoKeys3").classList.remove("whiteButton"); }, 500);
+	 }
 	// Sound clip code for E4
 	document.getElementById("soundE4").addEventListener("click", playE4);
-	function playE4() { document.getElementById("soundClipE4").play(); }
+	document.getElementById("pianoKeys5").addEventListener("click", playE4);
+	function playE4() { 
+		document.getElementById("soundClipE4").play();
+		setTimeout(function() { document.getElementById("pianoKeys5").classList.add("whiteButton"); }, 0);
+	  	setTimeout(function() { document.getElementById("pianoKeys5").classList.remove("whiteButton"); }, 500);
+	}
 	// Sound clip code for F4
 	document.getElementById("soundF4").addEventListener("click", playF4);
-	function playF4() { document.getElementById("soundClipF4").play(); }
+	document.getElementById("pianoKeys6").addEventListener("click", playF4);
+	function playF4() {
+		document.getElementById("soundClipF4").play();
+		setTimeout(function() { document.getElementById("pianoKeys6").classList.add("whiteButton"); }, 0);
+	  	setTimeout(function() { document.getElementById("pianoKeys6").classList.remove("whiteButton"); }, 500); }
 	// Sound clip code for G4
 	document.getElementById("soundG4").addEventListener("click", playG4);
-	function playG4() { document.getElementById("soundClipG4").play(); }
+	document.getElementById("pianoKeys8").addEventListener("click", playG4);
+	function playG4() { 
+		document.getElementById("soundClipG4").play();
+		setTimeout(function() { document.getElementById("pianoKeys8").classList.add("whiteButton"); }, 0);
+	  	setTimeout(function() { document.getElementById("pianoKeys8").classList.remove("whiteButton"); }, 500); }
 	// Sound clip code for A4
 	document.getElementById("soundA4").addEventListener("click", playA4);
-	function playA4() { document.getElementById("soundClipA4").play(); }
+	document.getElementById("pianoKeys10").addEventListener("click", playA4);
+	function playA4() { 
+		document.getElementById("soundClipA4").play();
+		setTimeout(function() { document.getElementById("pianoKeys10").classList.add("whiteButton"); }, 0);
+	  	setTimeout(function() { document.getElementById("pianoKeys10").classList.remove("whiteButton"); }, 500); }
 	// Sound clip code for B4
 	document.getElementById("soundB4").addEventListener("click", playB4);
-	function playB4() { document.getElementById("soundClipB4").play(); }
+	document.getElementById("pianoKeys12").addEventListener("click", playB4);
+	function playB4() { 
+		document.getElementById("soundClipB4").play();
+		setTimeout(function() { document.getElementById("pianoKeys12").classList.add("whiteButton"); }, 0);
+	  	setTimeout(function() { document.getElementById("pianoKeys12").classList.remove("whiteButton"); }, 500); }
+	// Sound clip code for C4S
+	document.getElementById("soundC4S").addEventListener("click", playC4S);
+	document.getElementById("pianoKeys2").addEventListener("click", playC4S);
+	function playC4S() { 
+		document.getElementById("soundClipC4S").play();
+		setTimeout(function() { document.getElementById("pianoKeys2").classList.add("blackButton"); }, 0)
+		setTimeout(function() { document.getElementById("pianoKeys2").classList.remove("blackButton"); }, 500)
+		 }
+	// Sound clip code for D4S
+	document.getElementById("soundD4S").addEventListener("click", playD4S);
+	document.getElementById("pianoKeys4").addEventListener("click", playD4S);
+	function playD4S() { 
+		document.getElementById("soundClipD4S").play();
+		setTimeout(function() { document.getElementById("pianoKeys4").classList.add("blackButton"); }, 0)
+		setTimeout(function() { document.getElementById("pianoKeys4").classList.remove("blackButton"); }, 500) }
+	// Sound clip code for F4S
+	document.getElementById("soundF4S").addEventListener("click", playF4S);
+	document.getElementById("pianoKeys7").addEventListener("click", playF4S);
+	function playF4S() { 
+		document.getElementById("soundClipF4S").play();
+		setTimeout(function() { document.getElementById("pianoKeys7").classList.add("blackButton"); }, 0)
+		setTimeout(function() { document.getElementById("pianoKeys7").classList.remove("blackButton"); }, 500) 
+	}
+	// Sound clip code for G4S
+	document.getElementById("soundG4S").addEventListener("click", playG4S);
+	document.getElementById("pianoKeys9").addEventListener("click", playG4S);
+	function playG4S() { 
+		document.getElementById("soundClipG4S").play();
+		setTimeout(function() { document.getElementById("pianoKeys9").classList.add("blackButton"); }, 0)
+		setTimeout(function() { document.getElementById("pianoKeys9").classList.remove("blackButton"); }, 500) }
+	// Sound clip code for A4S
+	document.getElementById("soundA4S").addEventListener("click", playA4S);
+	document.getElementById("pianoKeys11").addEventListener("click", playA4S);
+	function playA4S() { 
+		document.getElementById("soundClipA4S").play();
+		setTimeout(function() { document.getElementById("pianoKeys11").classList.add("blackButton"); }, 0)
+		setTimeout(function() { document.getElementById("pianoKeys11").classList.remove("blackButton"); }, 500)
+	}
 
 	// reset the playlist, then refresh the page
 	document.getElementById("resetPlaylist").addEventListener("click", clearList);

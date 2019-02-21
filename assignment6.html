@@ -95,7 +95,7 @@
 	</div>
 
 	<ul class="pianoSet">
-  		<li class="white c"  id="pianoKeys1" name="pkC4"></li>
+  		<li class="white c"  id="pianoKeys1"></li>
 		<li class="black cs" id="pianoKeys2"></li>
 		<li class="white d"  id="pianoKeys3"></li>
 		<li class="black ds" id="pianoKeys4"></li>
@@ -395,7 +395,7 @@
 
 	/* Functions to play actual sound effect for each note
 	* classList lets each note "play" on the piano as it plays */
-	
+
 	// Sound clip code for C4
 	document.getElementById("soundC4").addEventListener("click", playC4);
 	document.getElementById("pianoKeys1").addEventListener("click", playC4);
@@ -457,39 +457,40 @@
 	document.getElementById("pianoKeys2").addEventListener("click", playC4S);
 	function playC4S() { 
 		document.getElementById("soundClipC4S").play();
-		setTimeout(function() { document.getElementById("pianoKeys2").classList.add("blackButton"); }, 0)
-		setTimeout(function() { document.getElementById("pianoKeys2").classList.remove("blackButton"); }, 500)
+		setTimeout(function() { document.getElementById("pianoKeys2").classList.add("blackButton"); }, 0);
+		setTimeout(function() { document.getElementById("pianoKeys2").classList.remove("blackButton"); }, 500);
 	}
 	// Sound clip code for D4S
 	document.getElementById("soundD4S").addEventListener("click", playD4S);
 	document.getElementById("pianoKeys4").addEventListener("click", playD4S);
 	function playD4S() { 
 		document.getElementById("soundClipD4S").play();
-		setTimeout(function() { document.getElementById("pianoKeys4").classList.add("blackButton"); }, 0)
-		setTimeout(function() { document.getElementById("pianoKeys4").classList.remove("blackButton"); }, 500) 
+		setTimeout(function() { document.getElementById("pianoKeys4").classList.add("blackButton"); }, 0);
+		setTimeout(function() { document.getElementById("pianoKeys4").classList.remove("blackButton"); }, 500);
 	}
 	// Sound clip code for F4S
 	document.getElementById("soundF4S").addEventListener("click", playF4S);
 	document.getElementById("pianoKeys7").addEventListener("click", playF4S);
 	function playF4S() { 
 		document.getElementById("soundClipF4S").play();
-		setTimeout(function() { document.getElementById("pianoKeys7").classList.add("blackButton"); }, 0)
-		setTimeout(function() { document.getElementById("pianoKeys7").classList.remove("blackButton"); }, 500) 
+		setTimeout(function() { document.getElementById("pianoKeys7").classList.add("blackButton"); }, 0);
+		setTimeout(function() { document.getElementById("pianoKeys7").classList.remove("blackButton"); }, 500);
 	}
 	// Sound clip code for G4S
 	document.getElementById("soundG4S").addEventListener("click", playG4S);
 	document.getElementById("pianoKeys9").addEventListener("click", playG4S);
 	function playG4S() { 
 		document.getElementById("soundClipG4S").play();
-		setTimeout(function() { document.getElementById("pianoKeys9").classList.add("blackButton"); }, 0)
-		setTimeout(function() { document.getElementById("pianoKeys9").classList.remove("blackButton"); }, 500) }
+		setTimeout(function() { document.getElementById("pianoKeys9").classList.add("blackButton"); }, 0);
+		setTimeout(function() { document.getElementById("pianoKeys9").classList.remove("blackButton"); }, 500);
+	}
 	// Sound clip code for A4S
 	document.getElementById("soundA4S").addEventListener("click", playA4S);
 	document.getElementById("pianoKeys11").addEventListener("click", playA4S);
 	function playA4S() { 
 		document.getElementById("soundClipA4S").play();
-		setTimeout(function() { document.getElementById("pianoKeys11").classList.add("blackButton"); }, 0)
-		setTimeout(function() { document.getElementById("pianoKeys11").classList.remove("blackButton"); }, 500)
+		setTimeout(function() { document.getElementById("pianoKeys11").classList.add("blackButton"); }, 0);
+		setTimeout(function() { document.getElementById("pianoKeys11").classList.remove("blackButton"); }, 500);
 	}
 
 	// reset the playlist, then refresh the page

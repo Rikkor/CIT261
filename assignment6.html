@@ -81,6 +81,16 @@
 		ul li:last-child { border-radius:0 5px 5px 5px; }
 		.highlight { color: yellow; }
 		#highlight { color: yellow; }
+		.noteTransition {
+			width: 0px;
+			height: 0px;
+			background-color: lightgrey;
+			animation-name: pianoHighlight;
+			animation-duration: 2s;
+		}
+		@keyframes pianoHighlight {
+			0%   {background-color: #707070;}
+		}
 	</style>
 </head>
 <body>
@@ -404,6 +414,8 @@
 		document.getElementById("soundClipC4").play(); 
 		setTimeout(function() { document.getElementById("pianoKeys1").classList.add("whiteButton"); }, 0);
 	  	setTimeout(function() { document.getElementById("pianoKeys1").classList.remove("whiteButton"); }, 500);
+	  	setTimeout(function() { document.getElementById("soundC4").classList.add("noteTransition"); }, 0);
+	  	setTimeout(function() { document.getElementById("soundC4").classList.remove("noteTransition"); }, 500);
 	}
 	// Sound clip code for D4
 	document.getElementById("soundD4").addEventListener("click", playD4);
@@ -412,6 +424,8 @@
 		document.getElementById("soundClipD4").play();
 		setTimeout(function() { document.getElementById("pianoKeys3").classList.add("whiteButton"); }, 0);
 	  	setTimeout(function() { document.getElementById("pianoKeys3").classList.remove("whiteButton"); }, 500);
+	  	setTimeout(function() { document.getElementById("soundD4").classList.add("noteTransition"); }, 0);
+	  	setTimeout(function() { document.getElementById("soundD4").classList.remove("noteTransition"); }, 500);
 	}
 	// Sound clip code for E4
 	document.getElementById("soundE4").addEventListener("click", playE4);
@@ -420,6 +434,8 @@
 		document.getElementById("soundClipE4").play();
 		setTimeout(function() { document.getElementById("pianoKeys5").classList.add("whiteButton"); }, 0);
 	  	setTimeout(function() { document.getElementById("pianoKeys5").classList.remove("whiteButton"); }, 500);
+	  	setTimeout(function() { document.getElementById("soundE4").classList.add("noteTransition"); }, 0);
+	  	setTimeout(function() { document.getElementById("soundE4").classList.remove("noteTransition"); }, 500);
 	}
 	// Sound clip code for F4
 	document.getElementById("soundF4").addEventListener("click", playF4);
@@ -427,7 +443,9 @@
 	function playF4() {
 		document.getElementById("soundClipF4").play();
 		setTimeout(function() { document.getElementById("pianoKeys6").classList.add("whiteButton"); }, 0);
-	  	setTimeout(function() { document.getElementById("pianoKeys6").classList.remove("whiteButton"); }, 500); 
+	  	setTimeout(function() { document.getElementById("pianoKeys6").classList.remove("whiteButton"); }, 500);
+	  	setTimeout(function() { document.getElementById("soundF4").classList.add("noteTransition"); }, 0);
+	  	setTimeout(function() { document.getElementById("soundF4").classList.remove("noteTransition"); }, 500);
 	}
 	// Sound clip code for G4
 	document.getElementById("soundG4").addEventListener("click", playG4);
@@ -435,7 +453,9 @@
 	function playG4() { 
 		document.getElementById("soundClipG4").play();
 		setTimeout(function() { document.getElementById("pianoKeys8").classList.add("whiteButton"); }, 0);
-	  	setTimeout(function() { document.getElementById("pianoKeys8").classList.remove("whiteButton"); }, 500); 
+	  	setTimeout(function() { document.getElementById("pianoKeys8").classList.remove("whiteButton"); }, 500);
+	  	setTimeout(function() { document.getElementById("soundG4").classList.add("noteTransition"); }, 0);
+	  	setTimeout(function() { document.getElementById("soundG4").classList.remove("noteTransition"); }, 500);
 	}
 	// Sound clip code for A4
 	document.getElementById("soundA4").addEventListener("click", playA4);
@@ -443,7 +463,9 @@
 	function playA4() { 
 		document.getElementById("soundClipA4").play();
 		setTimeout(function() { document.getElementById("pianoKeys10").classList.add("whiteButton"); }, 0);
-	  	setTimeout(function() { document.getElementById("pianoKeys10").classList.remove("whiteButton"); }, 500); 
+	  	setTimeout(function() { document.getElementById("pianoKeys10").classList.remove("whiteButton"); }, 500);
+	  	setTimeout(function() { document.getElementById("soundA4").classList.add("noteTransition"); }, 0);
+	  	setTimeout(function() { document.getElementById("soundA4").classList.remove("noteTransition"); }, 500);
 	}
 	// Sound clip code for B4
 	document.getElementById("soundB4").addEventListener("click", playB4);
@@ -451,7 +473,9 @@
 	function playB4() { 
 		document.getElementById("soundClipB4").play();
 		setTimeout(function() { document.getElementById("pianoKeys12").classList.add("whiteButton"); }, 0);
-	  	setTimeout(function() { document.getElementById("pianoKeys12").classList.remove("whiteButton"); }, 500); 
+	  	setTimeout(function() { document.getElementById("pianoKeys12").classList.remove("whiteButton"); }, 500);
+	  	setTimeout(function() { document.getElementById("soundB4").classList.add("noteTransition"); }, 0);
+	  	setTimeout(function() { document.getElementById("soundB4").classList.remove("noteTransition"); }, 500);
 	}
 	// Sound clip code for C4S
 	document.getElementById("soundC4S").addEventListener("click", playC4S);
@@ -460,6 +484,8 @@
 		document.getElementById("soundClipC4S").play();
 		setTimeout(function() { document.getElementById("pianoKeys2").classList.add("blackButton"); }, 0);
 		setTimeout(function() { document.getElementById("pianoKeys2").classList.remove("blackButton"); }, 500);
+		setTimeout(function() { document.getElementById("soundC4S").classList.add("noteTransition"); }, 0);
+	  	setTimeout(function() { document.getElementById("soundC4S").classList.remove("noteTransition"); }, 500);
 	}
 	// Sound clip code for D4S
 	document.getElementById("soundD4S").addEventListener("click", playD4S);
@@ -468,6 +494,8 @@
 		document.getElementById("soundClipD4S").play();
 		setTimeout(function() { document.getElementById("pianoKeys4").classList.add("blackButton"); }, 0);
 		setTimeout(function() { document.getElementById("pianoKeys4").classList.remove("blackButton"); }, 500);
+		setTimeout(function() { document.getElementById("soundD4S").classList.add("noteTransition"); }, 0);
+	  	setTimeout(function() { document.getElementById("soundD4S").classList.remove("noteTransition"); }, 500);
 	}
 	// Sound clip code for F4S
 	document.getElementById("soundF4S").addEventListener("click", playF4S);
@@ -476,6 +504,8 @@
 		document.getElementById("soundClipF4S").play();
 		setTimeout(function() { document.getElementById("pianoKeys7").classList.add("blackButton"); }, 0);
 		setTimeout(function() { document.getElementById("pianoKeys7").classList.remove("blackButton"); }, 500);
+		setTimeout(function() { document.getElementById("soundF4S").classList.add("noteTransition"); }, 0);
+	  	setTimeout(function() { document.getElementById("soundF4S").classList.remove("noteTransition"); }, 500);
 	}
 	// Sound clip code for G4S
 	document.getElementById("soundG4S").addEventListener("click", playG4S);
@@ -484,6 +514,8 @@
 		document.getElementById("soundClipG4S").play();
 		setTimeout(function() { document.getElementById("pianoKeys9").classList.add("blackButton"); }, 0);
 		setTimeout(function() { document.getElementById("pianoKeys9").classList.remove("blackButton"); }, 500);
+		setTimeout(function() { document.getElementById("soundG4S").classList.add("noteTransition"); }, 0);
+	  	setTimeout(function() { document.getElementById("soundG4S").classList.remove("noteTransition"); }, 500);
 	}
 	// Sound clip code for A4S
 	document.getElementById("soundA4S").addEventListener("click", playA4S);
@@ -492,6 +524,8 @@
 		document.getElementById("soundClipA4S").play();
 		setTimeout(function() { document.getElementById("pianoKeys11").classList.add("blackButton"); }, 0);
 		setTimeout(function() { document.getElementById("pianoKeys11").classList.remove("blackButton"); }, 500);
+		setTimeout(function() { document.getElementById("soundA4S").classList.add("noteTransition"); }, 0);
+	  	setTimeout(function() { document.getElementById("soundA4S").classList.remove("noteTransition"); }, 500);
 	}
 
 	// reset the playlist, then refresh the page

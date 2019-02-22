@@ -3,6 +3,7 @@
 <head>
 	<title>Dom Manipulation/Javascript Events/CSS Animations with Javascript</title>
 	<style>
+		/* Styling for the buttons on the site */
 		.button {
     		background-color: #363636;
     		border: none;
@@ -15,11 +16,13 @@
 		.button:hover {
     		background-color: #000000;
 		}
+		/* Random styling for various elements on page*/
 		#p1, h2, #centeredText {
 			text-align: center;
 		}
 		.div1 { text-align: center; }
 		body { background-color: lightgrey; }
+		/* Style UL for piano playlist and piano keyboard notes*/
 		ul {
 			text-align: center;
 			list-style-position: inside;
@@ -39,6 +42,7 @@
 			float:left;
 			list-style:none;
 		}
+		/* Specific styling for white notes on piano */
 		ul .white {
 			height:16em; width:4em; z-index:1;
 			border-left:1px solid #bbb;
@@ -54,6 +58,7 @@
 			box-shadow:2px 0 3px rgba(0,0,0,0.1) inset, -5px 5px 20px rgba(0,0,0,0.2) inset,0 0 3px rgba(0,0,0,0.2);
 			background: linear-gradient(top, #fff 0%,#e9e9e9 100%);
 		}
+		/* This helps make the white piano notes light up on the keyboard when played */
 		.whiteButton {
 			border-top:1px solid #777;
 			border-left:1px solid #999;
@@ -61,6 +66,7 @@
 			box-shadow:2px 0 3px rgba(0,0,0,0.1) inset, -5px 5px 20px rgba(0,0,0,0.2) inset,0 0 3px rgba(0,0,0,0.2);
 			background: #707070;
 		}
+		/* Specific styling for black notes on piano */
 		.black {
 			height:8em; width:2em; margin:0 0 0 -1em; z-index:2;
 			border:1px solid #000;
@@ -72,15 +78,16 @@
 			box-shadow:-1px -1px 2px rgba(255,255,255,0.2) inset, 0 -2px 2px 3px rgba(0,0,0,0.6) inset, 0 1px 2px rgba(0,0,0,0.5);
 			background:linear-gradient(left, #444 0%,#222 100%);
 		}
+		/* This helps make the black piano notes light up on the keyboard when played */
 		.blackButton {
 			box-shadow:-1px -1px 2px rgba(255,255,255,0.2) inset, 0 -2px 2px 3px rgba(0,0,0,0.6) inset, 0 1px 2px rgba(0,0,0,0.5);
 			background: #707070;
 		}
+		/* Without this the piano keys on the keyboard look realllllly bad */
 		.e,.g,.a,.b,.c,.d { margin:0 0 0 -1em; }
 		ul li:first-child { border-radius:5px 0 5px 5px; }
 		ul li:last-child { border-radius:0 5px 5px 5px; }
-		.highlight { color: yellow; }
-		#highlight { color: yellow; }
+		/* Lights up the note labels when their respective note is played */
 		.noteTransition {
 			width: 0px;
 			height: 0px;
@@ -106,6 +113,7 @@
 			<br><font color="red">**Just a warning, this keyboard has trouble playing the same note multiple times in a row through the playlist.</font></p>
 	</div>
 
+	<!-- UL for the piano keyboard-->
 	<ul class="pianoSet">
   		<li class="white c"  id="pianoKeys1"></li>
 		<li class="black cs" id="pianoKeys2"></li>
@@ -120,7 +128,7 @@
 		<li class="black as" id="pianoKeys11"></li>
 		<li class="white b"  id="pianoKeys12"></li>
 	</ul>
-	<!--Piano Soundboard HTML-->
+	<!--Piano Note Labels-->
 		<table align="center">
 			<tr id="p2">
 				<td></td>
@@ -132,6 +140,7 @@
 				<td id="soundA4S">A4 Sharp</td>
 			</tr>
 			<tr>
+				<!--Pressing the button below each note label adds it to the playlist-->
 				<td></td>
 				<td><button class="button" id="buttonC4S">Add to playlist</button></td>
 				<td><button class="button" id="buttonD4S">Add to playlist</button></td>
@@ -140,6 +149,7 @@
 				<td><button class="button" id="buttonG4S">Add to playlist</button></td>
 				<td><button class="button" id="buttonA4S">Add to playlist</button></td>
 			</tr>
+			<!--Piano Note Labels-->
 			<tr id="p2">
 				<td id="soundC4">C4</td>
 				<td id="soundD4">D4</td>
@@ -150,6 +160,7 @@
 				<td id="soundB4">B4</td>
 			</tr>
 			<tr>
+				<!--Pressing the button below each note label adds it to the playlist-->
 				<td><button class="button" id="buttonC4">Add to playlist</button></td>
 				<td><button class="button" id="buttonD4">Add to playlist</button></td>
 				<td><button class="button" id="buttonE4">Add to playlist</button></td>
@@ -408,123 +419,147 @@
 	/* Functions to play actual sound effect for each note
 	* classList lets each note "play" on the piano as it plays */
 
-	// Sound clip code for C4
+	// Sound clip code for C4. Tie note label and piano note to JS events
 	document.getElementById("soundC4").addEventListener("click", playC4);
 	document.getElementById("pianoKeys1").addEventListener("click", playC4);
 	function playC4() { 
 		document.getElementById("soundClipC4").play(); 
+		// lights up the piano keyboard for each key played
 		setTimeout(function() { document.getElementById("pianoKeys1").classList.add("whiteButton"); }, 0);
 	  	setTimeout(function() { document.getElementById("pianoKeys1").classList.remove("whiteButton"); }, 500);
+	  	// lights up the note label below the keyboard when the note is played
 	  	setTimeout(function() { document.getElementById("soundC4").classList.add("noteTransition"); }, 0);
 	  	setTimeout(function() { document.getElementById("soundC4").classList.remove("noteTransition"); }, 500);
 	}
-	// Sound clip code for D4
+	// Sound clip code for D4. Tie note label and piano note to JS events
 	document.getElementById("soundD4").addEventListener("click", playD4);
 	document.getElementById("pianoKeys3").addEventListener("click", playD4);
 	function playD4() { 
 		document.getElementById("soundClipD4").play();
+		// lights up the piano keyboard for each key played
 		setTimeout(function() { document.getElementById("pianoKeys3").classList.add("whiteButton"); }, 0);
 	  	setTimeout(function() { document.getElementById("pianoKeys3").classList.remove("whiteButton"); }, 500);
+	  	// lights up the note label below the keyboard when the note is played
 	  	setTimeout(function() { document.getElementById("soundD4").classList.add("noteTransition"); }, 0);
 	  	setTimeout(function() { document.getElementById("soundD4").classList.remove("noteTransition"); }, 500);
 	}
-	// Sound clip code for E4
+	// Sound clip code for E4. Tie note label and piano note to JS events
 	document.getElementById("soundE4").addEventListener("click", playE4);
 	document.getElementById("pianoKeys5").addEventListener("click", playE4);
 	function playE4() { 
 		document.getElementById("soundClipE4").play();
+		// lights up the piano keyboard for each key played
 		setTimeout(function() { document.getElementById("pianoKeys5").classList.add("whiteButton"); }, 0);
 	  	setTimeout(function() { document.getElementById("pianoKeys5").classList.remove("whiteButton"); }, 500);
+	  	// lights up the note label below the keyboard when the note is played
 	  	setTimeout(function() { document.getElementById("soundE4").classList.add("noteTransition"); }, 0);
 	  	setTimeout(function() { document.getElementById("soundE4").classList.remove("noteTransition"); }, 500);
 	}
-	// Sound clip code for F4
+	// Sound clip code for F4. Tie note label and piano note to JS events
 	document.getElementById("soundF4").addEventListener("click", playF4);
 	document.getElementById("pianoKeys6").addEventListener("click", playF4);
 	function playF4() {
 		document.getElementById("soundClipF4").play();
+		// lights up the piano keyboard for each key played
 		setTimeout(function() { document.getElementById("pianoKeys6").classList.add("whiteButton"); }, 0);
 	  	setTimeout(function() { document.getElementById("pianoKeys6").classList.remove("whiteButton"); }, 500);
+	  	// lights up the note label below the keyboard when the note is played
 	  	setTimeout(function() { document.getElementById("soundF4").classList.add("noteTransition"); }, 0);
 	  	setTimeout(function() { document.getElementById("soundF4").classList.remove("noteTransition"); }, 500);
 	}
-	// Sound clip code for G4
+	// Sound clip code for G4. Tie note label and piano note to JS events
 	document.getElementById("soundG4").addEventListener("click", playG4);
 	document.getElementById("pianoKeys8").addEventListener("click", playG4);
 	function playG4() { 
 		document.getElementById("soundClipG4").play();
+		// lights up the piano keyboard for each key played
 		setTimeout(function() { document.getElementById("pianoKeys8").classList.add("whiteButton"); }, 0);
 	  	setTimeout(function() { document.getElementById("pianoKeys8").classList.remove("whiteButton"); }, 500);
+	  	// lights up the note label below the keyboard when the note is played
 	  	setTimeout(function() { document.getElementById("soundG4").classList.add("noteTransition"); }, 0);
 	  	setTimeout(function() { document.getElementById("soundG4").classList.remove("noteTransition"); }, 500);
 	}
-	// Sound clip code for A4
+	// Sound clip code for A4. Tie note label and piano note to JS events
 	document.getElementById("soundA4").addEventListener("click", playA4);
 	document.getElementById("pianoKeys10").addEventListener("click", playA4);
 	function playA4() { 
 		document.getElementById("soundClipA4").play();
+		// lights up the piano keyboard for each key played
 		setTimeout(function() { document.getElementById("pianoKeys10").classList.add("whiteButton"); }, 0);
 	  	setTimeout(function() { document.getElementById("pianoKeys10").classList.remove("whiteButton"); }, 500);
+	  	// lights up the note label below the keyboard when the note is played
 	  	setTimeout(function() { document.getElementById("soundA4").classList.add("noteTransition"); }, 0);
 	  	setTimeout(function() { document.getElementById("soundA4").classList.remove("noteTransition"); }, 500);
 	}
-	// Sound clip code for B4
+	// Sound clip code for B4. Tie note label and piano note to JS events
 	document.getElementById("soundB4").addEventListener("click", playB4);
 	document.getElementById("pianoKeys12").addEventListener("click", playB4);
 	function playB4() { 
 		document.getElementById("soundClipB4").play();
+		// lights up the piano keyboard for each key played
 		setTimeout(function() { document.getElementById("pianoKeys12").classList.add("whiteButton"); }, 0);
 	  	setTimeout(function() { document.getElementById("pianoKeys12").classList.remove("whiteButton"); }, 500);
+	  	// lights up the note label below the keyboard when the note is played
 	  	setTimeout(function() { document.getElementById("soundB4").classList.add("noteTransition"); }, 0);
 	  	setTimeout(function() { document.getElementById("soundB4").classList.remove("noteTransition"); }, 500);
 	}
-	// Sound clip code for C4S
+	// Sound clip code for C4S. Tie note label and piano note to JS events
 	document.getElementById("soundC4S").addEventListener("click", playC4S);
 	document.getElementById("pianoKeys2").addEventListener("click", playC4S);
 	function playC4S() { 
 		document.getElementById("soundClipC4S").play();
+		// lights up the piano keyboard for each key played
 		setTimeout(function() { document.getElementById("pianoKeys2").classList.add("blackButton"); }, 0);
 		setTimeout(function() { document.getElementById("pianoKeys2").classList.remove("blackButton"); }, 500);
+		// lights up the note label below the keyboard when the note is played
 		setTimeout(function() { document.getElementById("soundC4S").classList.add("noteTransition"); }, 0);
 	  	setTimeout(function() { document.getElementById("soundC4S").classList.remove("noteTransition"); }, 500);
 	}
-	// Sound clip code for D4S
+	// Sound clip code for D4S. Tie note label and piano note to JS events
 	document.getElementById("soundD4S").addEventListener("click", playD4S);
 	document.getElementById("pianoKeys4").addEventListener("click", playD4S);
 	function playD4S() { 
 		document.getElementById("soundClipD4S").play();
+		// lights up the piano keyboard for each key played
 		setTimeout(function() { document.getElementById("pianoKeys4").classList.add("blackButton"); }, 0);
 		setTimeout(function() { document.getElementById("pianoKeys4").classList.remove("blackButton"); }, 500);
+		// lights up the note label below the keyboard when the note is played
 		setTimeout(function() { document.getElementById("soundD4S").classList.add("noteTransition"); }, 0);
 	  	setTimeout(function() { document.getElementById("soundD4S").classList.remove("noteTransition"); }, 500);
 	}
-	// Sound clip code for F4S
+	// Sound clip code for F4S. Tie note label and piano note to JS events
 	document.getElementById("soundF4S").addEventListener("click", playF4S);
 	document.getElementById("pianoKeys7").addEventListener("click", playF4S);
 	function playF4S() { 
 		document.getElementById("soundClipF4S").play();
+		// lights up the piano keyboard for each key played
 		setTimeout(function() { document.getElementById("pianoKeys7").classList.add("blackButton"); }, 0);
 		setTimeout(function() { document.getElementById("pianoKeys7").classList.remove("blackButton"); }, 500);
+		// lights up the note label below the keyboard when the note is played
 		setTimeout(function() { document.getElementById("soundF4S").classList.add("noteTransition"); }, 0);
 	  	setTimeout(function() { document.getElementById("soundF4S").classList.remove("noteTransition"); }, 500);
 	}
-	// Sound clip code for G4S
+	// Sound clip code for G4S. Tie note label and piano note to JS events
 	document.getElementById("soundG4S").addEventListener("click", playG4S);
 	document.getElementById("pianoKeys9").addEventListener("click", playG4S);
 	function playG4S() { 
 		document.getElementById("soundClipG4S").play();
+		// lights up the piano keyboard for each key played
 		setTimeout(function() { document.getElementById("pianoKeys9").classList.add("blackButton"); }, 0);
 		setTimeout(function() { document.getElementById("pianoKeys9").classList.remove("blackButton"); }, 500);
+		// lights up the note label below the keyboard when the note is played
 		setTimeout(function() { document.getElementById("soundG4S").classList.add("noteTransition"); }, 0);
 	  	setTimeout(function() { document.getElementById("soundG4S").classList.remove("noteTransition"); }, 500);
 	}
-	// Sound clip code for A4S
+	// Sound clip code for A4S. Tie note label and piano note to JS events
 	document.getElementById("soundA4S").addEventListener("click", playA4S);
 	document.getElementById("pianoKeys11").addEventListener("click", playA4S);
 	function playA4S() { 
 		document.getElementById("soundClipA4S").play();
+		// lights up the piano keyboard for each key played
 		setTimeout(function() { document.getElementById("pianoKeys11").classList.add("blackButton"); }, 0);
 		setTimeout(function() { document.getElementById("pianoKeys11").classList.remove("blackButton"); }, 500);
+		// lights up the note label below the keyboard when the note is played
 		setTimeout(function() { document.getElementById("soundA4S").classList.add("noteTransition"); }, 0);
 	  	setTimeout(function() { document.getElementById("soundA4S").classList.remove("noteTransition"); }, 500);
 	}

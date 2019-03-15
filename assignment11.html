@@ -18,42 +18,56 @@
 		#p1, h2, #demo, #p2 {
 			text-align: center;
 		}
-		#p2 {
-			font-style: italic;
-		}
 		.div1 {
 		   text-align: center;
 		}
 		body {
 		   background-color: lightgrey;
 		}
-		#div2 {
-		   width: 220px;
-		   height: 100px;
-		   background-color: green;
+		.div2 {
+		   width: 240px;
+		   height: 110px;
+		   background-color: lightblue;
 		   border: 1px solid black;
 		}
+		.div3 {
+		   width: 240px;
+		   height: 110px;
+		   background-color: lightblue;
+		   border: 1px solid black;
+		   overflow: auto;
+		}
 		.divTransformX {
+			background-color: red;
 		   -webkit-transform: rotateX(150deg); /* Safari */
   		   transform: rotateX(150deg); /* Standard syntax */
 		}
 		.divTransformY {
+			background-color: yellow;
 		   -webkit-transform: rotateY(150deg); /* Safari */
   		   transform: rotateY(150deg); /* Standard syntax */
 		}
 		.divTransformZ {
+			background-color: coral;
 		   -webkit-transform: rotateZ(90deg); /* Safari */
 			transform: rotateZ(90deg);
 		}
 		.divTransitionX {
-			-webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
-  			transition: width 2s;
+			background-color: red;
   			width: 400px;
+  			height: 100px;
 		}
 		.divTransitionY {
-		   -webkit-transition: height 2s; /* For Safari 3.1 to 6.0 */
-  		   transition: height 2s;
+		   background-color: yellow;
+  		   width: 220px;
   		   height: 200px;
+		}
+		.divTransition {
+			background-color: coral;
+		    width: 400px;
+		    height: 200px;
+		    padding: 50px;
+		    border-radius: 25px;
 		}
 	</style>
 	</head>
@@ -62,17 +76,23 @@
 	<h1 align="center">CSS3 Transitions, Transforms and Animations</h1>
 	<p id="p2">This page shows how JavaScript objects are used</p><hr>
 
-	<h2>CSS3 Stuff</h2>
+	<h2>CSS3 Transforms</h2>
 	<p id="p2">Filler Text</p>
 
 	<div align="center">
 	<button class="button" id="buttonOne">Transform X</button>
 	<button class="button" id="buttonTwo">Transform Y</button>
-	<button class="button" id="buttonThree">Transform Y</button><br>
+	<button class="button" id="buttonThree">Transform Z</button><br><br>
+	<div id="div2" class="div2"><br>Filler Text to help show
+		<br>when something is happening
+		<br>inside the div!</div><br><hr>
+
+	<h2>CSS3 Transitions</h2>
+	<p id="p2">Filler Text</p>
 	<button class="button" id="buttonFour">Transition X</button>
-	<button class="button" id="buttonFive">Transition Y</button><br><br>
-	
-	<div id="div2" class="divTransitionX">Filler Text to help show
+	<button class="button" id="buttonFive">Transition Y</button>
+	<button class="button" id="buttonSix">Transition Both</button><br><br>
+	<div id="div3" class ="div3"><br>Filler Text to help show
 		<br>when something is happening
 		<br>inside the div!</div><br>
 	</div>
@@ -97,13 +117,26 @@
 	}
 	document.getElementById("buttonFour").addEventListener("click", transitionDivX);
 	function transitionDivX () {
-		setTimeout(function() { document.getElementById("div2").classList.add("divTransitionX"); }, 0);
-		setTimeout(function() { document.getElementById("div2").classList.remove("divTransitionX"); }, 750);
+		document.getElementById("div3").style.WebkitTransition = "all 2s"; // Code for Safari 3.1 to 6.0
+  		document.getElementById("div3").style.transition = "all 2s";     // Standard syntax
+		setTimeout(function() { document.getElementById("div3").classList.add("divTransitionX"); }, 0);
+		setTimeout(function() { document.getElementById("div3").classList.remove("divTransitionX"); }, 1500);
 	}
 	document.getElementById("buttonFive").addEventListener("click", transitionDivY);
 	function transitionDivY () {
-		setTimeout(function() { document.getElementById("div2").classList.add("divTransitionY"); }, 0);
-		setTimeout(function() { document.getElementById("div2").classList.remove("divTransitionY"); }, 750);
+		document.getElementById("div3").style.WebkitTransition = "all 2s"; // Code for Safari 3.1 to 6.0
+  		document.getElementById("div3").style.transition = "all 2s";     // Standard syntax
+		setTimeout(function() { document.getElementById("div3").classList.add("divTransitionY"); }, 0);
+		setTimeout(function() { document.getElementById("div3").classList.remove("divTransitionY"); }, 1500);
+	}
+	document.getElementById("buttonSix").addEventListener("click", transitionDiv);
+	function transitionDiv () {
+		document.getElementById("div3").style.WebkitTransition = "all 2s"; // Code for Safari 3.1 to 6.0
+  		document.getElementById("div3").style.transition = "all 2s";     // Standard syntax
+  		setTimeout(function() { document.getElementById("div3").classList.remove("div3"); }, 0);
+		setTimeout(function() { document.getElementById("div3").classList.add("divTransition"); }, 0);
+		setTimeout(function() { document.getElementById("div3").classList.remove("divTransition"); }, 1500);
+		setTimeout(function() { document.getElementById("div3").classList.add("div3"); }, 0);
 	}
 	</script>
 </body>

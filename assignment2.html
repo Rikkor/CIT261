@@ -12,7 +12,6 @@
     		font-size: 16px;
     		cursor: pointer;
 		}
-
 		.button:hover {
     		background-color: #000000;
 		}
@@ -41,52 +40,64 @@
 	<h2>JavaScript Object Creation Functions, Properties & Methods</h2>
 	<p id="p2">Each of the buttons below will access a premade user's information. Click each button
 		to display various information about them</p>
+
 	<div class="div1">
 		<button onclick="displayName()" class="button">Full Name</button>
-		<button onclick="displayID()" class="button">User ID</button>
+		<button onclick="displayAnimal()" class="button">Animal Type</button>
 		<button onclick="displayColor()" class="button">Favorite Color</button>
 		<button onclick="displayFriends()" class="button">Best Friends</button>
+		<button onclick="displayAll()" class="button">Display All</button>
 	</div>
 
 	<p id="demo"></p><hr>
 
 	<script>
 	//Create an object
-	var person = {
+	var Tails = {
     	firstName: "Tails",
     	lastName : "Prowler",
-    	userID   : 1029486,
+    	animalType   : "Fox",
     	favoriteColor: "Orange",
     	bestFriends: "Sonic" + " & " + "Amy",
     	fullName : function() {
        	return this.firstName + " " + this.lastName;
     	},
-    	ID : function() {
-    		return this.userID;
+    	animal : function() {
+    		return this.animalType;
     	},
     	color : function() {
     		return this.favoriteColor;
     	},
     	friend : function() {
     		return this.bestFriends;
-    	},
+    	}, 
 	};
 
 	function displayName() {
-		//Activates from a button and grabs full name from the object
-		document.getElementById("demo").innerHTML = person.fullName();
+		// display full name
+		//document.getElementById("demo").innerHTML = "Full name: " + Tails.fullName();
+		var objValue = document.getElementById("container").value;
+		//alert(objValue);
+		document.getElementById("demo").innerHTML = "Full name: " + objValue.fullName();
 	}
-	function displayID() {
-		//Activates from a button and grabs ID from the object
-		document.getElementById("demo").innerHTML = person.ID();
+	function displayAnimal() {
+		// display animal type
+		document.getElementById("demo").innerHTML = "Animal Type: " + Tails.animal();
 	}
 	function displayColor() {
-		//Activates from a button and grabs favorite color from the object
-		document.getElementById("demo").innerHTML = person.color();
+		// display favorite color
+		document.getElementById("demo").innerHTML = "Favorite Color: " + Tails.color();
 	}
 	function displayFriends() {
-		//Activates from a button and grabs favorite color from the object
-		document.getElementById("demo").innerHTML = person.friend();
+		// display best friends
+		document.getElementById("demo").innerHTML = "Best Friends: " + Tails.friend();
+	}
+	function displayAll() {
+		// display all object details
+		document.getElementById("demo").innerHTML = "<strong>Full name:</strong> " + Tails.fullName() + "<br>" +
+			"<strong>Animal Type:</strong> " + Tails.animal() + "<br>" +
+			"<strong>Favorite Color:</strong> " + Tails.color() + "<br>" +
+			"<strong>Best Friends:</strong> " + Tails.friend() + "<br>";
 	}
 	</script>
 </body>

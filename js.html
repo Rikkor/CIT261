@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Local Storage</title>
+	<style>
+		#h1, #h2, #h3, #h4, #p1, #p2, #p3, #p4, #demo, #demo2, #demo3 {
+			text-align: center;
+			font-family: "Times New Roman", Times, serif;
+		}
+		#demo, #demo2, #demo3 {
+			font-style: bold;
+		}
+		hr {
+			width: 45%;
+		}
+	</style>
+	</head>
+	<body>
+	<div align="center">
+
+	<h1 id="h1">Local Storage</h1>
+	<p id="p1">This page demonstrages how variables such as background colors and fonts can be
+		<br>stored in local storage.<br>
+		<br>This button will reset all local storage values to default.</p>
+	<button onclick="defaultTypes()">Default Values</button><hr>
+
+	<!-- Drop-down list for changing page background colors -->
+	<h2 id="h2">Change Background Color</h2>
+	<p id="p2">Select any color from the drop-down list to change the current page's background color.
+		<br>This color will also be stored in the local storage.</p>
+	<select name="pnumber" id="party" onchange="changeColors()">
+		<option value="1">Light Grey (Default)</option>
+		<option value="2">Red</option>
+		<option value="3">Blue</option>
+		<option value="4">White</option>
+		<option value="5">Black</option>
+		<option value="6">Yellow</option>
+		<option value="7">Orange</option>
+	</select>
+	<p id="demo"></p><hr>  <!--Displays text for background color change for colors()-->
+
+	<!-- Drop-down list for changing page font types -->
+	<h2 id="h3">Change Page Font Families</h2>
+	<p id="p3">Select any font type from the drop-down list to change the current page's font type.
+		<br>This font type will also be stored in the local storage.</p>
+	<select name="fnumber" id="fontParty" onchange="changeFontFamily()">
+		<option value="1">Times New Roman (Default)</option>
+		<option value="2">Palatino Linotype</option>
+		<option value="3">Georgia</option>
+		<option value="4">Courier New</option>
+		<option value="5">Impact</option>
+		<option value="6">Trebuchet MS</option>
+		<option value="7">Lucida</option>
+	</select>
+	<p id="demo2"></p><hr>  <!--Displays text for font family type changed for fontFamily()-->
+	
+	<!-- Drop-down list for changing page font colors -->
+	<h2 id="h4">Change Page Font Colors</h2>
+	<p id="p4">Select any color from the drop-down list to change the current page's font color.
+		<br>This color will also be stored in the local storage.</p>
+	<select name="fcnumber" id="fontColor" onchange="changeFontColor()">
+		<option value="1">Black (Default)</option>
+		<option value="2">Red</option>
+		<option value="3">Blue</option>
+		<option value="4">White</option>
+		<option value="5">Light Grey</option>
+		<option value="6">Yellow</option>
+		<option value="7">Orange</option>
+	</select>
+	<p id="demo3"></p><hr>  <!--Displays font color changed for fontColor()-->
+
+	<p id="demo4"></p> <!-- Need this here for the loops-->
+
+	</div> <!-- centers everything on page-->
+
+	<script>
+	// variables for background color
+	var bgcolor;
+	var party = document.getElementById('party');
+	// helps with setting up local storage values on page start-up
+	function changeColors() {
+		localStorage.setItem("bgcolor", party.value);
+		colors();
+	}
+	// change background colors through local storage
+	function colors() {
+	    //localStorage.setItem("bgcolor", party.value);
+	    switch (localStorage.getItem('bgcolor')) {
+	    	case '1':
+	    		document.body.style.backgroundColor = 'lightgrey';
+	        	document.getElementById('demo').innerHTML = "Background changed to Light Grey (default).";
+	        	break;
+	        case '2':
+	        	document.body.style.backgroundColor = 'red';
+	        	document.getElementById('demo').innerHTML = "Background changed to Red.";
+	        	break;
+	        case '3':
+	        	document.body.style.backgroundColor = 'blue';
+	        	document.getElementById('demo').innerHTML = "Background changed to Blue.";
+	        	break;
+	        case '4':
+	        	document.body.style.backgroundColor = 'white';
+	        	document.getElementById('demo').innerHTML = "Background changed to White.";
+	        	break;
+	        case '5':
+	        	document.body.style.backgroundColor = 'black';
+	        	document.getElementById('demo').innerHTML = "Background changed to Black.";
+	        	break;
+	        case '6':
+	        	document.body.style.backgroundColor = 'yellow';
+	        	document.getElementById('demo').innerHTML = "Background changed to Yellow.";
+	        	break;
+	        case '7':
+	        	document.body.style.backgroundColor = 'orange';
+	        	document.getElementById('demo').innerHTML = "Background changed to Orange.";
+	        	break;
+	        default:
+	        	document.body.style.backgroundColor = "lightgrey";
+	    		document.getElementById('demo').innerHTML = "Background changed to Light Grey (default).";
+	    } // close case statement
+	} // close colors function
+
+	// variables for page font families
+	var pageFontFamily;
+	var partyFont = document.getElementById('fontParty');
+	// helps with setting up local storage values on page start-up
+	function changeFontFamily() {
+		localStorage.setItem('pageFontFamily', partyFont.value);
+		fontFamily();
+	}
+	// change page fonts through local storage
+	function fontFamily() {
+	    //localStorage.setItem("pageFontFamily", fontFamily.value);
+	    switch (localStorage.getItem('pageFontFamily')) {
+	    	case '1':
+	    		for (var i = 1; i <= 4; i++) {
+	    			document.getElementById('h' + i).style.fontFamily = "Times New Roman,Times, serif";
+	    			document.getElementById('p' + i).style.fontFamily = "Times New Roman,Times, serif";
+	    		}
+		    	document.getElementById('demo').style.fontFamily = "Times New Roman,Times, serif";
+		    	document.getElementById('demo2').style.fontFamily = "Times New Roman,Times, serif";
+		    	document.getElementById('demo3').style.fontFamily = "Times New Roman,Times, serif";
+		        document.getElementById('demo2').innerHTML = "Page font families changed to Times New Roman (default).";
+	        	break;
+	        case '2':
+	    		for (var i = 1; i <= 4; i++) {
+	    			document.getElementById('h' + i).style.fontFamily = "Palatino Linotype, Book Antiqua, Palatino, serif";
+	    			document.getElementById('p' + i).style.fontFamily = "Palatino Linotype, Book Antiqua, Palatino, serif";
+	    		}
+		    	document.getElementById('demo').style.fontFamily = "Palatino Linotype, Book Antiqua, Palatino, serif";
+		    	document.getElementById('demo2').style.fontFamily = "Palatino Linotype, Book Antiqua, Palatino, serif";
+		    	document.getElementById('demo3').style.fontFamily = "Palatino Linotype, Book Antiqua, Palatino, serif";
+		    	document.getElementById('demo2').innerHTML = "Page font families changed to Palatino Linotype.";
+	        	break;
+	        case '3':
+	    		for (var i = 1; i <= 4; i++) {
+	    			document.getElementById('h' + i).style.fontFamily = "Georgia, serif";
+	    			document.getElementById('p' + i).style.fontFamily = "Georgia, serif";
+	    		}
+		    	document.getElementById('demo').style.fontFamily = "Georgia, serif";
+		    	document.getElementById('demo2').style.fontFamily = "Georgia, serif";
+		    	document.getElementById('demo3').style.fontFamily = "Georgia, serif";
+		    	document.getElementById('demo2').innerHTML = "Page font families changed to Georgia.";
+	        	break;
+	        case '4':
+	    		for (var i = 1; i <= 4; i++) {
+	    			document.getElementById('h' + i).style.fontFamily = "Courier New, Courier, monospace";
+	    			document.getElementById('p' + i).style.fontFamily = "Courier New, Courier, monospace";
+	    		}
+		    	document.getElementById('demo').style.fontFamily = "Courier New, Courier, monospace";
+		    	document.getElementById('demo2').style.fontFamily = "Courier New, Courier, monospace";
+		    	document.getElementById('demo3').style.fontFamily = "Courier New, Courier, monospace";
+		    	document.getElementById('demo2').innerHTML = "Page font families changed to Courier New.";
+	        	break;
+	        case '5':
+	    		for (var i = 1; i <= 4; i++) {
+	    			document.getElementById('h' + i).style.fontFamily = "Impact,Charcoal,sans-serif";
+	    			document.getElementById('p' + i).style.fontFamily = "Impact,Charcoal,sans-serif";
+	    		}
+		    	document.getElementById('demo').style.fontFamily = "Impact,Charcoal,sans-serif";
+		    	document.getElementById('demo2').style.fontFamily = "Impact,Charcoal,sans-serif";
+		    	document.getElementById('demo3').style.fontFamily = "Impact,Charcoal,sans-serif";
+		        document.getElementById('demo2').innerHTML = "Page font families changed to Impact.";
+	        	break;
+	        case '6':
+	    		for (var i = 1; i <= 4; i++) {
+	    			document.getElementById('h' + i).style.fontFamily = "Trebuchet MS, Helvetica, sans-serif";
+	    			document.getElementById('p' + i).style.fontFamily = "Trebuchet MS, Helvetica, sans-serif";
+	    		}
+		    	document.getElementById('demo').style.fontFamily = "Trebuchet MS, Helvetica, sans-serif";
+		    	document.getElementById('demo2').style.fontFamily = "Trebuchet MS, Helvetica, sans-serif";
+		    	document.getElementById('demo3').style.fontFamily = "Trebuchet MS, Helvetica, sans-serif";
+		        document.getElementById('demo2').innerHTML = "Page font families changed to Trebuchet MS.";
+	        	break;
+	        case '7':
+	    		for (var i = 1; i <= 4; i++) {
+	    			document.getElementById('h' + i).style.fontFamily = "Lucida Console, Monaco, monospace";
+	    			document.getElementById('p' + i).style.fontFamily = "Lucida Console, Monaco, monospace";
+	    		}
+		    	document.getElementById('demo').style.fontFamily = "Lucida Console, Monaco, monospace";
+		    	document.getElementById('demo2').style.fontFamily = "Lucida Console, Monaco, monospace";
+		    	document.getElementById('demo3').style.fontFamily = "Lucida Console, Monaco, monospace";
+		        document.getElementById('demo2').innerHTML = "Page font families changed to Lucida Console.";
+	        	break;
+	        default:
+	    		for (var i = 1; i <= 4; i++) {
+	    			document.getElementById('h' + i).style.fontFamily = "Times New Roman,Times, serif";
+	    			document.getElementById('p' + i).style.fontFamily = "Times New Roman,Times, serif";
+	    		}
+		    	document.getElementById('demo').style.fontFamily = "Times New Roman,Times, serif";
+		    	document.getElementById('demo2').style.fontFamily = "Times New Roman,Times, serif";
+		    	document.getElementById('demo3').style.fontFamily = "Times New Roman,Times, serif";
+	        	document.getElementById('demo2').innerHTML = "Page font families changed to Times New Roman (default).";
+	    } // close case statement
+	} // close fontFamily()
+
+	// variables for page font colors
+	var pageFontColor;
+	var fontColorP = document.getElementById('fontColor');
+	// helps with setting up local storage values on page start-up
+	function changeFontColor() {
+		localStorage.setItem('pageFontColor', fontColorP.value);
+		fontColor();
+	}
+	// change page fonts through local storage
+	function fontColor() {
+	//localStorage.setItem("pageFontColor", fontColorP.value);
+	switch (localStorage.getItem('pageFontColor')) {
+	    case '1':
+	    	for (var i = 1; i <= 4; i++) {
+	    		document.getElementById('h' + i).style.color = "black";
+	    		document.getElementById('p' + i).style.color = "black";
+	    	}
+	    	document.getElementById('demo').style.color = "black";
+	    	document.getElementById('demo2').style.color = "black";
+	    	document.getElementById('demo3').style.color = "black";
+	        document.getElementById('demo3').innerHTML = "Page font colors changed to black (default).";
+	        break;
+	    case '2':
+	    	for (var i = 1; i <= 4; i++) {
+	    		document.getElementById('h' + i).style.color = "red";
+	    		document.getElementById('p' + i).style.color = "red";
+	    	}
+	    	document.getElementById('demo').style.color = "red";
+	    	document.getElementById('demo2').style.color = "red";
+	    	document.getElementById('demo3').style.color = "red";
+	        document.getElementById('demo3').innerHTML = "Page font colors changed to Red.";
+	        break;
+	    case '3':
+	    	for (var i = 1; i <= 4; i++) {
+	    		document.getElementById('h' + i).style.color = "blue";
+	    		document.getElementById('p' + i).style.color = "blue";
+	    	}
+	    	document.getElementById('demo').style.color = "blue";
+	    	document.getElementById('demo2').style.color = "blue";
+	    	document.getElementById('demo3').style.color = "blue";
+	        document.getElementById('demo3').innerHTML = "Page font colors changed to Blue.";
+	        break;
+	    case '4':
+	    	for (var i = 1; i <= 4; i++) {
+	    		document.getElementById('h' + i).style.color = "white";
+	    		document.getElementById('p' + i).style.color = "white";
+	    	}
+	    	document.getElementById('demo').style.color = "white";
+	    	document.getElementById('demo2').style.color = "white";
+	    	document.getElementById('demo3').style.color = "white";
+	        document.getElementById('demo3').innerHTML = "Page font colors changed to White.";
+	        break;
+	    case '5':
+	    	for (var i = 1; i <= 4; i++) {
+	    		document.getElementById('h' + i).style.color = "lightgrey";
+	    		document.getElementById('p' + i).style.color = "lightgrey";
+	    	}
+	    	document.getElementById('demo').style.color = "lightgrey";
+	    	document.getElementById('demo2').style.color = "lightgrey";
+	    	document.getElementById('demo3').style.color = "lightgrey";
+	        document.getElementById('demo3').innerHTML = "Page font colors changed to Light Grey.";
+	        break;
+        case '6':
+	    	for (var i = 1; i <= 4; i++) {
+	    		document.getElementById('h' + i).style.color = "yellow";
+	    		document.getElementById('p' + i).style.color = "yellow";
+	    	}
+	    	document.getElementById('demo').style.color = "yellow";
+	    	document.getElementById('demo2').style.color = "yellow";
+	    	document.getElementById('demo3').style.color = "yellow";
+	        document.getElementById('demo3').innerHTML = "Page font colors changed to Yellow.";
+	        break;
+	    case '7':
+	    	for (var i = 1; i <= 4; i++) {
+	    		document.getElementById('h' + i).style.color = "orange";
+	    		document.getElementById('p' + i).style.color = "orange";
+	    	}
+	    	document.getElementById('demo').style.color= "orange";
+	    	document.getElementById('demo2').style.color= "orange";
+	    	document.getElementById('demo3').style.color= "orange";
+	        document.getElementById('demo3').innerHTML = "Page font colors changed to Orange.";
+	        break;
+	   default:
+	    	for (var i = 1; i <= 4; i++) {
+	    		document.getElementById('h' + i).style.color = "black";
+	    		document.getElementById('p' + i).style.color = "black";
+	    	}
+	    	document.getElementById('demo').style.color = "black";
+	    	document.getElementById('demo2').style.color = "black";
+	    	document.getElementById('demo3').style.color = "black";
+	    	document.getElementById('demo3').innerHTML = "Page font colors changed to black (default).";
+	    } // close case statement
+	} // close fontColor()
+
+	// load up saved local storage items
+	window.onload = function theme(){
+	colors();
+	fontColor();
+	fontFamily();
+    //document.body.style.backgroundColor = localStorage.getItem('bgcolor');
+	}
+	// resets page to default types
+	function defaultTypes() {
+		// these function's case statements don't go to 8, which will default them
+		localStorage.setItem("bgcolor", '8');
+		localStorage.setItem('pageFontFamily', '8');
+		localStorage.setItem('pageFontColor', '8');
+		colors();
+		fontColor();
+		fontFamily();
+	}
+	</script>
+</body>
+</html>

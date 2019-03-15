@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>JavaScript Objects</title>
+	<style>
+		.button {
+    		background-color: #363636;
+    		border: none;
+    		color: white;
+    		padding: 15px 25px;
+    		text-align: center;
+    		font-size: 16px;
+    		cursor: pointer;
+		}
+		.button:hover {
+    		background-color: #000000;
+		}
+		#p1, h2, #demo, #p2 {
+			text-align: center;
+		}
+		#p2 {
+			font-style: italic;
+		}
+		.div1 {
+		   text-align: center;
+		}
+		body {
+		   background-color: lightgrey;
+		}
+		#div2 {
+		   width: 220px;
+		   height: 100px;
+		   background-color: green;
+		   border: 1px solid black;
+		}
+		.divTransformX {
+		   -webkit-transform: rotateX(150deg); /* Safari */
+  		   transform: rotateX(150deg); /* Standard syntax */
+		}
+		.divTransformY {
+		   -webkit-transform: rotateY(150deg); /* Safari */
+  		   transform: rotateY(150deg); /* Standard syntax */
+		}
+		.divTransformZ {
+		   -webkit-transform: rotateZ(90deg); /* Safari */
+			transform: rotateZ(90deg);
+		}
+		.divTransitionX {
+			-webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
+  			transition: width 2s;
+  			width: 400px;
+		}
+		.divTransitionY {
+		   -webkit-transition: height 2s; /* For Safari 3.1 to 6.0 */
+  		   transition: height 2s;
+  		   height: 200px;
+		}
+	</style>
+	</head>
+	<body>
+
+	<h1 align="center">CSS3 Transitions, Transforms and Animations</h1>
+	<p id="p2">This page shows how JavaScript objects are used</p><hr>
+
+	<h2>CSS3 Stuff</h2>
+	<p id="p2">Filler Text</p>
+
+	<div align="center">
+	<button class="button" id="buttonOne">Transform X</button>
+	<button class="button" id="buttonTwo">Transform Y</button>
+	<button class="button" id="buttonThree">Transform Y</button><br>
+	<button class="button" id="buttonFour">Transition X</button>
+	<button class="button" id="buttonFive">Transition Y</button><br><br>
+	
+	<div id="div2" class="divTransitionX">Filler Text to help show
+		<br>when something is happening
+		<br>inside the div!</div><br>
+	</div>
+
+	<p id="demo"></p><hr>
+
+	<script>
+	document.getElementById("buttonOne").addEventListener("click", transformDivX);
+	function transformDivX () {
+		setTimeout(function() { document.getElementById("div2").classList.add("divTransformX"); }, 0);
+		setTimeout(function() { document.getElementById("div2").classList.remove("divTransformX"); }, 750);
+	}
+	document.getElementById("buttonTwo").addEventListener("click", transformDivY);
+	function transformDivY () {
+		setTimeout(function() { document.getElementById("div2").classList.add("divTransformY"); }, 0);
+		setTimeout(function() { document.getElementById("div2").classList.remove("divTransformY"); }, 750);
+	}
+	document.getElementById("buttonThree").addEventListener("click", transformDivZ);
+	function transformDivZ () {
+		setTimeout(function() { document.getElementById("div2").classList.add("divTransformZ"); }, 0);
+		setTimeout(function() { document.getElementById("div2").classList.remove("divTransformZ"); }, 750);
+	}
+	document.getElementById("buttonFour").addEventListener("click", transitionDivX);
+	function transitionDivX () {
+		setTimeout(function() { document.getElementById("div2").classList.add("divTransitionX"); }, 0);
+		setTimeout(function() { document.getElementById("div2").classList.remove("divTransitionX"); }, 750);
+	}
+	document.getElementById("buttonFive").addEventListener("click", transitionDivY);
+	function transitionDivY () {
+		setTimeout(function() { document.getElementById("div2").classList.add("divTransitionY"); }, 0);
+		setTimeout(function() { document.getElementById("div2").classList.remove("divTransitionY"); }, 750);
+	}
+	</script>
+</body>
+</html>

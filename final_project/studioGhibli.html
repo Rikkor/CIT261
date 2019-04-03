@@ -11,6 +11,8 @@
   </head>
 
   <body>
+  	<!-- helps pre-load everything -->
+  	<body onload="startingFunction()">
     <img src="logo.png" />
     <p>Welcome to my Studio Ghibli Fan Site!
       <br>You will find all sorts of information about Studio Ghibli using their API here.
@@ -22,7 +24,7 @@
     <div align="center">
 
     <!-- Movies section -->
-    <button class="collapsible" onclick="films()">Films</button>
+    <button class="collapsible">Films</button>
     <div class="content">
     	<p><br>These are the films Studio Ghibli has created</p>
        <div class="container"></div>
@@ -30,7 +32,7 @@
     </div><br> <!-- close content for films section -->
 
     <!-- Locations section -->
-    <button class="collapsible" onclick="locations()">Locations</button>
+    <button class="collapsible">Locations</button>
     <div class="content">
        <p><br>This is a list of all of the locations from the films</p>
        <div class="container"></div>
@@ -39,7 +41,7 @@
 
 
     <!-- People section -->
-    <button class="collapsible" onclick="people()">People</button>
+    <button class="collapsible">People</button>
     <div class="content">
        <p><br>This is a list of all of the people from the films</p>
        <div class="container"></div>
@@ -47,7 +49,7 @@
     </div><br> <!-- close content for people section -->
 
     <!-- Species section -->
-    <button class="collapsible" onclick="species()">Species</button>
+    <button class="collapsible">Species</button>
     <div class="content">
        <p><br>This is a list of all of the species from the films</p>
        <div class="container"></div>
@@ -55,7 +57,7 @@
     </div><br> <!-- close content for species section -->
 
     <!-- Vehicles section -->
-    <button class="collapsible" onclick="vehicles()">Vehicles</button>
+    <button class="collapsible">Vehicles</button>
     <div class="content">
        <p><br>This is a list of all of the vehicles from the films</p>
        <div class="container"></div>
@@ -77,10 +79,21 @@
          var content = this.nextElementSibling;
          if (content.style.display === "block") {
             content.style.display = "none";
+            window.scrollBy(0, -200)
          } else {
             content.style.display = "block";
+            window.scrollBy(0, 350)
          }
       });
+   }
+
+   // needed to pre-load each function
+   function startingFunction() {
+      films();
+      locations();
+      people();
+      species();
+      vehicles();
    }
 
    // all of the films studio ghibli has created

@@ -1,12 +1,8 @@
 const app = document.getElementById('root')
 
-const logo = document.createElement('img')
-logo.src = '\logo.png'
-
 const container = document.createElement('div')
 container.setAttribute('class', 'container')
 
-app.appendChild(logo)
 app.appendChild(container)
 
 var request = new XMLHttpRequest()
@@ -32,7 +28,7 @@ request.onload = function() {
     })
   } else {
     const errorMessage = document.createElement('marquee')
-    errorMessage.textContent = `Gah, it's not working!`
+    errorMessage.textContent = `Request failed. Please advise!`
     app.appendChild(errorMessage)
   }
 }

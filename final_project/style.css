@@ -2,6 +2,9 @@
   box-sizing: border-box
 }
 
+p {
+  text-align: center;
+}
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -50,7 +53,7 @@ p {
   transition: all .2s linear;
 }
 
-.card:hover {
+.card:hover, .collapsible:hover {
   box-shadow: 2px 8px 45px rgba(0, 0, 0, .15);
   transform: translate3D(0, -2px, 0);
 }
@@ -77,4 +80,27 @@ p {
 
 .card:nth-child(5n) h1 {
   background-image: linear-gradient(120deg, #ffc3a0 0%, #ffafbd 100%);
+}
+
+.collapsible {
+  background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+  text-align: center;
+  padding: 1.5rem 2.5rem;
+  margin: 0 0 2rem 0;
+  font-size: 1.5rem;
+  color: white;
+  width: 30%;
+  border-radius: 12px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
 }

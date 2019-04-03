@@ -14,7 +14,15 @@ html {
   background: #F6F6F6;
 }
 
-#root {
+#films {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+#locations {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+#people {
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -53,9 +61,43 @@ p {
   transition: all .2s linear;
 }
 
-.card:hover, .collapsible:hover {
+.card:hover {
   box-shadow: 2px 8px 45px rgba(0, 0, 0, .15);
   transform: translate3D(0, -2px, 0);
+}
+
+.collapsible:hover{
+  box-shadow: 2px 8px 45px rgba(0, 0, 0, .15);
+  transform: translate3D(0, -2px, 0);
+  -webkit-animation: pulsate 20s linear infinite;
+  -moz-animation: pulsate 20s linear infinite;
+  animation: pulsate 4s linear infinite;
+}
+
+h1:hover
+{
+  -webkit-animation: pulsate 20s linear infinite;
+  -moz-animation: pulsate 20s linear infinite;
+  animation: pulsate 4s linear infinite;
+}
+
+@-webkit-keyframes pulsate {
+  0%    {background: linear-gradient(120deg, #ffc3a0 0%, #ffafbd 100%);}
+  25%   {background: linear-gradient(120deg, #fbc2eb 0%, #a6c1ee 100%);}
+  50%   {background: linear-gradient(120deg, #ff9a9e 0%, #fecfef 100%);}
+  75%   {background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);}
+}
+@-moz-keyframes pulsate {
+  0%    {background: linear-gradient(120deg, #ffc3a0 0%, #ffafbd 100%);}
+  25%   {background: linear-gradient(120deg, #fbc2eb 0%, #a6c1ee 100%);}
+  50%   {background: linear-gradient(120deg, #ff9a9e 0%, #fecfef 100%);}
+  75%   {background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);}
+}
+@keyframes pulsate {
+  0%    {background: linear-gradient(120deg, #ffc3a0 0%, #ffafbd 100%);}
+  25%   {background: linear-gradient(120deg, #fbc2eb 0%, #a6c1ee 100%);}
+  50%   {background: linear-gradient(120deg, #ff9a9e 0%, #fecfef 100%);}
+  75%   {background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);}
 }
 
 @media screen and (min-width: 600px) {
@@ -83,7 +125,7 @@ p {
 }
 
 .collapsible {
-  background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+  background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
   text-align: center;
   padding: 1.5rem 2.5rem;
   margin: 0 0 2rem 0;

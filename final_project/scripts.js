@@ -1,4 +1,4 @@
-const app = document.getElementById('root')
+/*const app = document.getElementById('films')
 
 const container = document.createElement('div')
 container.setAttribute('class', 'container')
@@ -33,4 +33,4 @@ request.onload = function() {
   }
 }
 
-request.send()
+request.send()*/

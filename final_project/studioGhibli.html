@@ -13,22 +13,40 @@
   <body>
     <img src="logo.png" />
     <p>Welcome to my Studio Ghibli Fan Site!
-      <br>You will find all sorts of information about Studio Ghibli using their API here.</p>
-    <p>Click on any button to see more about movies, characters and more!
+      <br>You will find all sorts of information about Studio Ghibli using their API here.
+      <br>All of the information has been grabbed from here 
+      <a href="https://ghibliapi.herokuapp.com/">Studio Ghibli API.</a><br>
+      <br>Click on any button to see more about movies, locations, or characters!
       <br>Hope you enjoy!</p>
 
     <div align="center">
 
     <!-- Movies section -->
-    <button class="collapsible">Movies</button>
+    <button class="collapsible" onclick="films()">Films</button>
     <div class="content">
        <div class="container"></div>
-         <div id="root"></div>
+         <div id="films"></div>
+    </div><br>
+
+    <!-- Locations section -->
+    <button class="collapsible" onclick="locations()">Locations</button>
+    <div class="content">
+       <div class="container"></div>
+         <div id="locations"></div>
+    </div><br>
+
+
+    <!-- People section -->
+    <button class="collapsible" onclick="people()">People</button>
+    <div class="content">
+       <div class="container"></div>
+         <div id="people"></div>
     </div>
 
     </div> <!-- close centering div -->
-    <script src="scripts.js"></script>
     <script>
+    // all api calls are grabbed from the link below
+    // https://ghibliapi.herokuapp.com/
     var coll = document.getElementsByClassName("collapsible");
     var i;
 
@@ -43,6 +61,131 @@
          }
        });
     }
+
+    // handles the api/cards/information for the films section
+    function films() {
+       const app = document.getElementById('films')
+
+       const container = document.createElement('div')
+       container.setAttribute('class', 'container')
+
+       app.appendChild(container)
+
+       var request = new XMLHttpRequest()
+       request.open('GET', 'https://ghibliapi.herokuapp.com/films', true)
+
+       request.onload = function() {
+          // Begin accessing JSON data here
+          var data = JSON.parse(this.response)
+          if (request.status >= 200 && request.status < 400) {
+             data.forEach(movie => {
+                const card = document.createElement('div')
+                card.setAttribute('class', 'card')
+
+                const h1 = document.createElement('h1')
+                h1.textContent = movie.title
+
+                const p = document.createElement('p')
+                movie.description = movie.description.substring(0, 1000)
+                p.innerHTML = `${movie.description}<br>` 
+                + `<br><strong>Director:</strong> ${movie.director}`
+
+                container.appendChild(card)
+                card.appendChild(h1)
+                card.appendChild(p)
+                })
+          } else {
+             const errorMessage = document.createElement('marquee')
+             errorMessage.textContent = `Request failed. Please advise!`
+             app.appendChild(errorMessage)
+          }
+       }
+       request.send()
+    }
+
+    // handles the api/cards/information for the locations section
+    function locations() {
+    const app = document.getElementById('locations')
+
+    const container = document.createElement('div')
+    container.setAttribute('class', 'container')
+
+    app.appendChild(container)
+
+    var request = new XMLHttpRequest()
+    request.open('GET', 'https://ghibliapi.herokuapp.com/locations', true)
+    request.onload = function() {
+       // Begin accessing JSON data here
+       var data = JSON.parse(this.response)
+       if (request.status >= 200 && request.status < 400) {
+         data.forEach(location => {
+         const card = document.createElement('div')
+         card.setAttribute('class', 'card')
+
+         const h1 = document.createElement('h1')
+         h1.textContent = location.name
+
+         const p = document.createElement('p')
+         p.innerHTML = `${location.climate}`
+         p.innerHTML = `<strong>Climate:</strong> ${location.climate}` 
+            + `<br><strong>Terrain:</strong> ${location.terrain}`
+            + `<br><strong>Surface Water:</strong> ${location.surface_water}` 
+
+         container.appendChild(card)
+         card.appendChild(h1)
+         card.appendChild(p)
+       })
+       } else {
+         const errorMessage = document.createElement('marquee')
+         errorMessage.textContent = `Request failed. Please advise!`
+         app.appendChild(errorMessage)
+       }
+  }
+
+request.send()
+}
+
+   function people() {
+       const app = document.getElementById('people')
+
+       const container = document.createElement('div')
+       container.setAttribute('class', 'container')
+
+       app.appendChild(container)
+
+       var request = new XMLHttpRequest()
+       request.open('GET', 'https://ghibliapi.herokuapp.com/people', true)
+       request.onload = function() {
+          // Begin accessing JSON data here
+          var data = JSON.parse(this.response)
+          if (request.status >= 200 && request.status < 400) {
+             data.forEach(people => {
+             const card = document.createElement('div')
+             card.setAttribute('class', 'card')
+
+             const h1 = document.createElement('h1')
+             h1.textContent = people.name
+
+             const p = document.createElement('p')
+             p.innerHTML = `<strong>Name:</strong> ${people.name}` 
+                + `<br><strong>Gender:</strong> ${people.gender}`
+                + `<br><strong>Age:</strong> ${people.age}` 
+                + `<br><strong>Eye Color:</strong> ${people.eye_color}` 
+                + `<br><strong>Hair Color:</strong> ${people.hair_color}`
+
+             container.appendChild(card)
+             card.appendChild(h1)
+             card.appendChild(p)
+          })
+          } else {
+             const errorMessage = document.createElement('marquee')
+             errorMessage.textContent = `Request failed. Please advise!`
+             app.appendChild(errorMessage)
+          }
+       }
+
+request.send()
+}
     </script>
   </body>
 </html>

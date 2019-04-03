@@ -24,6 +24,7 @@
     <!-- Movies section -->
     <button class="collapsible" onclick="films()">Films</button>
     <div class="content">
+    	<p><br>These are the films Studio Ghibli has created</p>
        <div class="container"></div>
          <div id="films"></div>
     </div><br> <!-- close content for films section -->
@@ -31,6 +32,7 @@
     <!-- Locations section -->
     <button class="collapsible" onclick="locations()">Locations</button>
     <div class="content">
+       <p><br>This is a list of all of the locations from the films</p>
        <div class="container"></div>
          <div id="locations"></div>
     </div><br> <!-- close content for locations section -->
@@ -39,11 +41,28 @@
     <!-- People section -->
     <button class="collapsible" onclick="people()">People</button>
     <div class="content">
+       <p><br>This is a list of all of the people from the films</p>
        <div class="container"></div>
          <div id="people"></div>
-    </div> <!-- close content for people section -->
+    </div><br> <!-- close content for people section -->
 
-    </div> <!-- close centering div -->
+    <!-- Species section -->
+    <button class="collapsible" onclick="species()">Species</button>
+    <div class="content">
+       <p><br>This is a list of all of the species from the films</p>
+       <div class="container"></div>
+         <div id="species"></div>
+    </div><br> <!-- close content for species section -->
+
+    <!-- Vehicles section -->
+    <button class="collapsible" onclick="vehicles()">Vehicles</button>
+    <div class="content">
+       <p><br>This is a list of all of the vehicles from the films</p>
+       <div class="container"></div>
+         <div id="vehicles"></div>
+    </div> <!-- close content for vehicles section -->
+
+    </div><br> <!-- close centering div -->
 
     <script>
    // all api calls are grabbed from the link below
@@ -64,7 +83,7 @@
       });
    }
 
-   // handles the api/cards/information for the films section
+   // all of the films studio ghibli has created
    function films() {
       const app = document.getElementById('films')
 
@@ -115,7 +134,7 @@
       request.send()
    } // close films()
 
-    // handles the api/cards/information for the locations section
+    // all of the locations from the films
    function locations() {
       const app = document.getElementById('locations')
 
@@ -156,6 +175,7 @@
       request.send()
    } // close locations()
 
+   // all of the different people from the films
    function people() {
       const app = document.getElementById('people')
 
@@ -196,6 +216,88 @@
       }
    request.send()
 } // close people()
+   
+   // all of the different species from the films
+   function species() {
+      const app = document.getElementById('species')
+
+      const container = document.createElement('div')
+      container.setAttribute('class', 'container')
+
+      app.appendChild(container)
+
+      var request = new XMLHttpRequest()
+      request.open('GET', 'https://ghibliapi.herokuapp.com/species', true)
+      request.onload = function() {
+         // Begin accessing JSON data here
+         var data = JSON.parse(this.response)
+         if (request.status >= 200 && request.status < 400) {
+            data.forEach(species => {
+            const card = document.createElement('div')
+            card.setAttribute('class', 'card')
+
+            const h1 = document.createElement('h1')
+            h1.textContent = species.name
+
+            const p = document.createElement('p')
+            p.innerHTML = `<strong>Name:</strong> ${species.name}` 
+               + `<br><strong>Classification:</strong> ${species.classification}`
+               + `<br><strong>Eye Color:</strong> ${species.eye_colors}` 
+               + `<br><strong>Hair Color:</strong> ${species.hair_colors}` 
+
+            container.appendChild(card)
+            card.appendChild(h1)
+            card.appendChild(p)
+            })
+         } else {
+            const errorMessage = document.createElement('marquee')
+            errorMessage.textContent = `Request failed. Please advise!`
+            app.appendChild(errorMessage)
+         }
+      }
+   request.send()
+} // close species()
+
+   // all of the different species from the films
+   function vehicles() {
+      const app = document.getElementById('vehicles')
+
+      const container = document.createElement('div')
+      container.setAttribute('class', 'container')
+
+      app.appendChild(container)
+
+      var request = new XMLHttpRequest()
+      request.open('GET', 'https://ghibliapi.herokuapp.com/vehicles', true)
+      request.onload = function() {
+         // Begin accessing JSON data here
+         var data = JSON.parse(this.response)
+         if (request.status >= 200 && request.status < 400) {
+            data.forEach(vehicles => {
+            const card = document.createElement('div')
+            card.setAttribute('class', 'card')
+
+            const h1 = document.createElement('h1')
+            h1.textContent = vehicles.name
+
+            const p = document.createElement('p')
+            p.innerHTML = `<strong>Name:</strong> ${vehicles.name}` 
+               + `<br><strong>Description:</strong> ${vehicles.description}`
+               + `<br><strong>Vehicle Class:</strong> ${vehicles.vehicle_class}` 
+               + `<br><strong>Length:</strong> ${vehicles.length}` 
+
+            container.appendChild(card)
+            card.appendChild(h1)
+            card.appendChild(p)
+            })
+         } else {
+            const errorMessage = document.createElement('marquee')
+            errorMessage.textContent = `Request failed. Please advise!`
+            app.appendChild(errorMessage)
+         }
+      }
+   request.send()
+} // close species()
     </script>
   </body>
 </html>

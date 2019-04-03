@@ -13,7 +13,7 @@ html {
   color: #666;
   background: #F6F6F6;
 }
-
+/* Set section widths to look a lot better! */
 #films {
   max-width: 1200px;
   margin: 0 auto;
@@ -26,7 +26,7 @@ html {
   max-width: 1200px;
   margin: 0 auto;
 }
-
+/* Card Headings */
 h1 {
   text-align: center;
   padding: 1.5rem 2.5rem;
@@ -46,7 +46,7 @@ p {
   padding: 0 2.5rem 2.5rem;
   margin: 0;
 }
-
+/* Manage the cards, their containers and all the CSS3 for them */
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -124,10 +124,11 @@ h1:hover
   background-image: linear-gradient(120deg, #ffc3a0 0%, #ffafbd 100%);
 }
 
+/* These help the buttons collapse and look good doing it */
 .collapsible {
   background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
   text-align: center;
-  padding: 1.0rem 2.0rem;
+  padding: 0.5rem 1.5rem;
   margin: 0 0 2rem 0;
   font-size: 1.5rem;
   color: white;

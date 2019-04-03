@@ -127,11 +127,11 @@ h1:hover
 .collapsible {
   background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
   text-align: center;
-  padding: 1.5rem 2.5rem;
+  padding: 1.0rem 2.0rem;
   margin: 0 0 2rem 0;
   font-size: 1.5rem;
   color: white;
-  width: 30%;
+  width: 25%;
   border-radius: 12px;
   -webkit-font-smoothing: antialiased;
 }
